@@ -3,3 +3,4 @@
 *.or
 *.ppu
 positron
+/lib/
