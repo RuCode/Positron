@@ -1,0 +1,14 @@
+LazarusResources.Add('TemplateLib','TXT',[
+  '{'#10'  Template library'#10'}'#10#10'library Template;'#10#10'function SubS'
+  +'tr(CString: PChar;FromPos,ToPos: Longint): PChar; cdecl;'#10#10'var'#10'  L'
+  +'ength: Integer;'#10#10'begin'#10'  Length := StrLen(CString);'#10'  SubStr '
+  +':= CString + Length;'#10'  if (FromPos > 0) and (ToPos >= FromPos) then'#10
+  +'  begin'#10'    if Length >= FromPos then'#10'      SubStr := CString + Fro'
+  +'mPos - 1;'#10'    if Length > ToPos then'#10'    CString[ToPos] := #0;'#10
+  +'  end;'#10'end;'#10#10'exports'#10'  SubStr;'#10#10'end.'#10
+]);
+LazarusResources.Add('TemplateUnit','TXT',[
+  '{'#10'  Template Unit'#10'}'#10#10'unit Template;'#10#10'{$mode objfpc}{$H+}'
+  +#10#10'interface'#10#10'uses'#10'  SysUtils;'#10#10'implementation'#10#10'en'
+  +'d.'#10#10
+]);

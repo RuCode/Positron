@@ -1,0 +1,17 @@
+{
+  Template Unit
+}
+
+unit Template;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  SysUtils;
+
+implementation
+
+end.
+

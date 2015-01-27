@@ -1,0 +1,30 @@
+Hint: * Преобразование файла /home/anton/delphigeist-delphi-stuff-read-only/SynMiniMap/demos/simple/Project1.dpr *
+Hint: К параметрам пользователя добавлены определения -dBorland -dVer150 -dDelphi7 -dCompiler6_Up -dPUREPASCAL
+Hint: Найдены все файлы модулей
+Hint: * Исправление списка используемых модулей в файле /home/anton/delphigeist-delphi-stuff-read-only/SynMiniMap/demos/simple/Project1.dpr *
+Hint: 
+Hint: *** Преобразование файлов модулей, принадлежащих проекту/пакету ***
+Hint: * Преобразование файла /home/anton/delphigeist-delphi-stuff-read-only/SynMiniMap/demos/simple/Unit1.pas *
+Hint: Модуль "Windows" в выражении Uses заменён на "LCLIntf, LCLType, LMessages".
+Hint: Пакет SynEdit добавлен в качестве зависимости.
+Hint: 
+Hint: *** Преобразование вновь обнаруженных файлов модулей ***
+Hint: * Преобразование файла /home/anton/delphigeist-delphi-stuff-read-only/SynMiniMap/demos/simple/SynMiniMap.pas *
+Hint: Модуль "Windows" в выражении Uses заменён на "LCLIntf, LCLType, LMessages".
+Hint: 
+Hint: *** Исправление списков используемых модулей и файлов форм ***
+Hint: * Исправление файла формы /home/anton/delphigeist-delphi-stuff-read-only/SynMiniMap/demos/simple/Unit1.lfm *
+Hint: Удалено свойство "AutoHotkeys".
+Hint: Удалено свойство "ExplicitHeight".
+Hint: Удалено свойство "ExplicitWidth".
+Hint: Удалено свойство "ExplicitTop".
+Hint: Удалено свойство "ExplicitLeft".
+Hint: Удалено свойство "ExplicitHeight".
+Hint: Удалено свойство "ExplicitTop".
+Hint: Удалено свойство "ExplicitLeft".
+Hint: Удалено свойство "TextHeight".
+Hint: Удалено свойство "OldCreateOrder".
+Hint: * Исправление списка используемых модулей в файле /home/anton/delphigeist-delphi-stuff-read-only/SynMiniMap/demos/simple/Unit1.pas *
+Hint: * Исправление списка используемых модулей в файле /home/anton/delphigeist-delphi-stuff-read-only/SynMiniMap/demos/simple/SynMiniMap.pas *
+Hint: Преобразование заняло: 00:00:01
+Hint: Преобразование завершено.

@@ -1,0 +1,1 @@
+Pascal|*.lpr *.lpi *.pas *.pps *.ppu *.inc|Asm|*.asm *.inc *.moc|Все файлы|*.*Pascal|*.lpr *.lpi *.pas *.pps *.ppu *.inc|Asm|*.asm *.inc *.moc|Все файлы|*.*

@@ -1,0 +1,49 @@
+object FrameReplaceText: TFrameReplaceText
+  Left = 0
+  Height = 63
+  Top = 0
+  Width = 320
+  ClientHeight = 63
+  ClientWidth = 320
+  TabOrder = 0
+  DesignLeft = 267
+  DesignTop = 75
+  object EditSearch: TEdit
+    Left = 0
+    Height = 25
+    Top = 8
+    Width = 224
+    Anchors = [akTop, akLeft, akRight]
+    OnKeyUp = EditSearchKeyUp
+    TabOrder = 0
+  end
+  object EditReplace: TEdit
+    Left = 0
+    Height = 25
+    Top = 32
+    Width = 224
+    Anchors = [akTop, akLeft, akRight]
+    OnKeyUp = EditSearchKeyUp
+    TabOrder = 1
+  end
+  object ButtonReplace: TButton
+    Left = 224
+    Height = 25
+    Top = 7
+    Width = 91
+    Anchors = [akTop, akRight]
+    Caption = 'Заменить'
+    OnClick = ButtonReplaceClick
+    TabOrder = 2
+  end
+  object ButtonReplaceAll: TButton
+    Left = 224
+    Height = 25
+    Top = 32
+    Width = 91
+    Anchors = [akTop, akRight]
+    Caption = 'Заменить все'
+    OnClick = ButtonReplaceAllClick
+    TabOrder = 3
+  end
+end
