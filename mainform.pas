@@ -5,7 +5,7 @@ unit MainForm;
 interface
 
 uses
-  Classes, SysUtils, types, FileUtil, Forms, Controls, Graphics, Dialogs,
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs,
   ExtCtrls, Menus, StdCtrls, ActnList, StdActns, CustomPosMemo, LResources,
   FindText, ReplaceText, ConfigManagers;
 
@@ -78,8 +78,7 @@ type
     procedure FileNewDynLibraryExecute(Sender: TObject);
     procedure FileNewUnitExecute(Sender: TObject);
     procedure FileSaveAsBeforeExecute(Sender: TObject);
-		procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
-		procedure FormDestroy(Sender: TObject);
+		procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure IsFileUpdate(Sender: TObject);
     procedure FileCloseAllFilesExecute(Sender: TObject);
     procedure FileCloseFileExecute(Sender: TObject);
@@ -156,8 +155,6 @@ begin
 end;
 
 procedure TFormMain.MenuItem2Click(Sender: TObject);
-var
-		ChildRect: types.TRect;
 begin
   with Memo.ActiveItem do
   begin
@@ -168,7 +165,7 @@ end;
 
 procedure TFormMain.MenuItem3Click(Sender: TObject);
 begin
-  ShowMessage(Memo.FileName + ' - ' + Memo.ActiveItem.TabSheet.Caption);
+  Memo.ActiveItem.Memo.TopLine:= 10;
 end;
 
 procedure TFormMain.MenuSelectClick(Sender: TObject);
@@ -297,7 +294,7 @@ procedure TFormMain.StoreHistory;
 
   function IsNewFile(Memo: TCustomPosMemo; Index: Integer): Boolean;
   begin
-     Result := (Memo.FileName = '');
+     Result := (Memo.Items[Index].FileName = '');
      Result := Result and (Memo.Items[Index].TabSheet.Caption <> '');
 	end;
 
@@ -305,20 +302,23 @@ var
   i: Integer;
   HistoryItem: THistoryItem;
 begin
+  if not Assigned(Config) then
+    exit;
   Config.BeginUpdate;
-  Config.HistoryCount := Memo.Count - 1;
+  Config.HistoryCount := Memo.Count;
   for i := 0 to Memo.Count - 1 do
   begin
     if IsNewFile(Memo, i) then
     begin
-      Config.SaveTextFile(Memo.Lines.Text, i);
+      Config.SaveTextFile(Memo.Items[i].Memo.Lines.Text, i);
       HistoryItem.FileName := Config.GetTmpFile(i);
 		end else begin
 		  HistoryItem.FileName := Memo.Items[i].FileName;
     end;
-    HistoryItem.CaretXY := Memo.Items[i].Memo.CaretXY;
+    {$HINT 'НАДО СОХРАНЯТЬ CARET и SEL_TEXT'}
     HistoryItem.SelStart := Memo.Items[i].Memo.SelStart;
     HistoryItem.SelLength := Memo.Items[i].Memo.SelEnd;
+    HistoryItem.TopLine := Memo.Items[i].Memo.TopLine;
     Config.HistoryFiles[i] := HistoryItem;
 	end;
   if Memo.AvaibleData then
@@ -329,30 +329,38 @@ end;
 procedure TFormMain.LoadHistory;
 // Открываем файлы из истории
 var
-  i, Count: Integer;
+  i, Count, CurrentTab: Integer;
   HistoryItem: THistoryItem;
 begin
+  if not Assigned(Config) then
+    exit;
   Config.BeginUpdate;
   Count := Config.HistoryCount;
-	for i := 0 to Count do
+  if Count = -1 then
+    exit;
+	for i := 0 to Count - 1 do
 	begin
 	  HistoryItem := Config.HistoryFiles[i];
-    if HistoryItem.FileName = '' then
-      Continue;
+    // Если файл не был сохранён
     if Config.IsTmpFile(HistoryItem.FileName) then
     begin
-      Memo.New;
-      Memo.ActiveItem.Memo.Lines.LoadFromFile(HistoryItem.FileName);
+      CurrentTab := Memo.New;
+      Memo.Items[CurrentTab].Memo.Lines.LoadFromFile(HistoryItem.FileName);
+      Memo.Items[CurrentTab].Memo.Modified:= True;
       DeleteFileUTF8(HistoryItem.FileName);
     end else
-	    Memo.Open(HistoryItem.FileName);
-	  Memo.ActiveItem.Memo.CaretXY := HistoryItem.CaretXY;
-	  Memo.ActiveItem.Memo.SelStart := HistoryItem.SelStart;
-	  Memo.ActiveItem.Memo.SelEnd := HistoryItem.SelLength;
-    if i = Config.ActiveTab then
-      Memo.ItemIndex := i;
+    // Если файл был сохранён
+	    CurrentTab := Memo.Open(HistoryItem.FileName);
+    // Загрузска параметров
+	  Memo.Items[CurrentTab].Memo.SelStart := HistoryItem.SelStart;
+    if HistoryItem.SelStart <> HistoryItem.SelLength then
+	    Memo.Items[CurrentTab].Memo.SelEnd := HistoryItem.SelLength;
+    Memo.Items[CurrentTab].Memo.TopLine := HistoryItem.TopLine;
+    {$HINT 'НАДО ВОССТАНАВЛИВАТЬ CARET и SEL_TEXT'}
 	end;
+  Memo.ItemIndex := Config.ActiveTab;
 	Config.EndUpdate;
+  DeleteFileUTF8(Config.ConfigName);
 end;
 
 function TFormMain.LoadTextFromLazarusResource(AName: string): string;
@@ -501,45 +509,14 @@ begin
   FileSaveAs.Dialog.FileName := Memo.ActiveItem.FileName;
 end;
 
-procedure TFormMain.FormCloseQuery(Sender: TObject; var CanClose: boolean);
-// Процедура вызываемая перед закрытием
-var
-  Modified: Boolean;
-	i: Integer;
-	res: TModalResult;
-begin
-  // Узнаём наличие модифицированных файлов
-  Modified:= False;
-  for i:= 0 to Memo.Count - 1 do
-      Modified:= Modified or Memo.Items[i].Memo.Modified;
-  // Вопрос и сохранение
-  if Modified then
-  begin
-    res := MessageDlg('Вопрос', 'Есть изменённые файлы, желаете сохранить?', mtConfirmation, mbYesNoCancel, '');
-    case res of
-      mrYes: begin
-        for i:= 0 to Memo.Count - 1 do
-           if Memo.Items[i].Memo.Modified then
-           begin
-              Memo.ItemIndex:= i;
-              FileSave.Execute;
-  			   end;
-        CanClose:= True;
-			end;
-      mrNo: CanClose:= True;
-    else
-      CanClose:= False;
-    end;
-	end;
-end;
-
-procedure TFormMain.FormDestroy(Sender: TObject);
-// Смываем
+procedure TFormMain.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+// Смываем именно в FormClose
 begin
   StorePositionToConfig;
   StoreHistory;
   Config.Free;
-  //Memo.Free;
+  Memo.Free;
+  CloseAction := caFree;
 end;
 
 procedure TFormMain.FileNewDynLibraryExecute(Sender: TObject);

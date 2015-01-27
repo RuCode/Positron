@@ -21,8 +21,7 @@ const
   ITEM_FILE = 'FILE_';
   ITEM_SELSTART = 'SELSTART_';
   ITEM_SELLEN = 'SELLEN_';
-  ITEM_CARETX = 'CARETX_';
-  ITEM_CARETY = 'CARETY_';
+  ITEM_TOPLINE = 'TOPLINE_';
   ITEM_ACTIVETAB = 'ACTIVE_TAB';
 
 type
@@ -30,7 +29,7 @@ type
     FileName: string;
     SelStart: integer;
     SelLength: integer;
-    CaretXY: TPoint;
+    TopLine: integer;
   end;
 
 type
@@ -65,8 +64,8 @@ type
     constructor Create; virtual;
     destructor Destroy; override;
     procedure SaveTextFile(const Text: string; Index: integer);
-    function GetTmpFile(Index: Integer): String;
-    function IsTmpFile(FileName: String): Boolean;
+    function GetTmpFile(Index: integer): string;
+    function IsTmpFile(FileName: string): boolean;
     // В случае изменения большого числа параметров
     procedure BeginUpdate;
     procedure EndUpdate;
@@ -104,14 +103,14 @@ end;
 function TConfigManager.GetHeight: integer;
 begin
   Open;
-  Result := fIniFile.ReadInteger(SECTION_POSITION, ITEM_HEIGHT, 150);
+  Result := fIniFile.ReadInteger(SECTION_POSITION, ITEM_HEIGHT, 350);
   Close;
 end;
 
 function TConfigManager.GetHistoryCount: integer;
 begin
   Open;
-  Result := fIniFile.ReadInteger(SECTION_HISTORY, ITEM_COUNT, 200);
+  Result := fIniFile.ReadInteger(SECTION_HISTORY, ITEM_COUNT, -1);
   Close;
 end;
 
@@ -121,8 +120,7 @@ begin
   Result.FileName := fIniFile.ReadString(SECTION_HISTORY, ITEM_FILE + IntToStr(Index), '');
   Result.SelStart := fIniFile.ReadInteger(SECTION_HISTORY, ITEM_SELSTART + IntToStr(Index), 0);
   Result.SelLength := fIniFile.ReadInteger(SECTION_HISTORY, ITEM_SELLEN + IntToStr(Index), 0);
-  Result.CaretXY.X := fIniFile.ReadInteger(SECTION_HISTORY, ITEM_CARETX + IntToStr(Index), 0);
-  Result.CaretXY.Y := fIniFile.ReadInteger(SECTION_HISTORY, ITEM_CARETY + IntToStr(Index), 0);
+  Result.TopLine := fIniFile.ReadInteger(SECTION_HISTORY, ITEM_TOPLINE + IntToStr(Index), 0);
   Close;
 end;
 
@@ -143,7 +141,7 @@ end;
 function TConfigManager.GetWidth: integer;
 begin
   Open;
-  Result := fIniFile.ReadInteger(SECTION_POSITION, ITEM_WIDTH, 200);
+  Result := fIniFile.ReadInteger(SECTION_POSITION, ITEM_WIDTH, 600);
   Close;
 end;
 
@@ -174,8 +172,7 @@ begin
   fIniFile.WriteString(SECTION_HISTORY, ITEM_FILE + IntToStr(Index), AValue.FileName);
   fIniFile.WriteInteger(SECTION_HISTORY, ITEM_SELSTART + IntToStr(Index), AValue.SelStart);
   fIniFile.WriteInteger(SECTION_HISTORY, ITEM_SELLEN + IntToStr(Index), AValue.SelLength);
-  fIniFile.WriteInteger(SECTION_HISTORY, ITEM_CARETX + IntToStr(Index), AValue.CaretXY.X);
-  fIniFile.WriteInteger(SECTION_HISTORY, ITEM_CARETY + IntToStr(Index), AValue.CaretXY.Y);
+  fIniFile.WriteInteger(SECTION_HISTORY, ITEM_TOPLINE + IntToStr(Index), AValue.TopLine);
   Close;
 end;
 
@@ -245,7 +242,7 @@ end;
 procedure TConfigManager.SaveTextFile(const Text: string; Index: integer);
 var
   FilePath: string;
-	hFile: TextFile;
+  hFile: TextFile;
 begin
   FilePath := GetTmpFile(Index);
   ForceFile(FilePath);
@@ -255,12 +252,12 @@ begin
   CloseFile(hFile);
 end;
 
-function TConfigManager.GetTmpFile(Index: Integer): String;
+function TConfigManager.GetTmpFile(Index: integer): string;
 begin
   Result := GetTmpPath + '/nf' + IntToStr(Index);
 end;
 
-function TConfigManager.IsTmpFile(FileName: String): Boolean;
+function TConfigManager.IsTmpFile(FileName: string): boolean;
 begin
   Result := Pos(GetTmpPath + '/nf', FileName) <> 0;
 end;

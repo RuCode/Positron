@@ -10,7 +10,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="3"/>
         <CursorPos X="5" Y="20"/>
-        <UsageCount Value="98"/>
+        <UsageCount Value="102"/>
       </Unit0>
       <Unit1>
         <Filename Value="mainform.pas"/>
@@ -20,9 +20,9 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="MainForm"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="292"/>
-        <CursorPos X="28" Y="299"/>
-        <UsageCount Value="98"/>
+        <TopLine Value="165"/>
+        <CursorPos X="36" Y="168"/>
+        <UsageCount Value="102"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -30,10 +30,10 @@
         <Filename Value="customposmemo.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="CustomPosMemo"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="796"/>
-        <CursorPos X="4" Y="799"/>
-        <UsageCount Value="97"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="770"/>
+        <CursorPos X="5" Y="781"/>
+        <UsageCount Value="101"/>
         <Loaded Value="True"/>
       </Unit2>
       <Unit3>
@@ -41,7 +41,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="97" Y="7"/>
-        <UsageCount Value="67"/>
+        <UsageCount Value="71"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit3>
       <Unit4>
@@ -49,7 +49,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="45" Y="4"/>
-        <UsageCount Value="66"/>
+        <UsageCount Value="70"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit4>
       <Unit5>
@@ -57,7 +57,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="157"/>
-        <UsageCount Value="65"/>
+        <UsageCount Value="69"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit5>
       <Unit6>
@@ -68,7 +68,7 @@
         <ResourceBaseClass Value="Frame"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="57" Y="18"/>
-        <UsageCount Value="48"/>
+        <UsageCount Value="52"/>
       </Unit6>
       <Unit7>
         <Filename Value="replacetext.pas"/>
@@ -79,41 +79,41 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="28"/>
         <CursorPos X="54" Y="50"/>
-        <UsageCount Value="43"/>
+        <UsageCount Value="47"/>
       </Unit7>
       <Unit8>
         <Filename Value="positronutils.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="42" Y="8"/>
-        <UsageCount Value="41"/>
+        <UsageCount Value="45"/>
       </Unit8>
       <Unit9>
         <Filename Value="thememanagers.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ThemeManagers"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="3"/>
         <CursorPos X="19"/>
-        <UsageCount Value="29"/>
+        <UsageCount Value="33"/>
         <Loaded Value="True"/>
       </Unit9>
       <Unit10>
         <Filename Value="filetreeviews.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="FileTreeViews"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="4"/>
         <CursorPos X="19"/>
-        <UsageCount Value="29"/>
+        <UsageCount Value="33"/>
         <Loaded Value="True"/>
       </Unit10>
       <Unit11>
         <Filename Value="configmanagers.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ConfigManagers"/>
-        <EditorIndex Value="4"/>
-        <TopLine Value="241"/>
-        <CursorPos X="34" Y="263"/>
-        <UsageCount Value="29"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="103"/>
+        <CursorPos X="66" Y="106"/>
+        <UsageCount Value="33"/>
         <Loaded Value="True"/>
       </Unit11>
       <Unit12>
@@ -157,9 +157,10 @@
       </Unit17>
       <Unit18>
         <Filename Value="/usr/lib/codetyphon/fpcsrc/rtl/objpas/fgl.pp"/>
+        <UnitName Value="fgl"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="836"/>
-        <CursorPos X="18" Y="838"/>
+        <TopLine Value="988"/>
+        <CursorPos X="3" Y="991"/>
         <UsageCount Value="10"/>
       </Unit18>
       <Unit19>
@@ -184,9 +185,9 @@
       <Unit22>
         <Filename Value="/usr/lib/codetyphon/fpcsrc/rtl/inc/objpash.inc"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="178"/>
-        <CursorPos X="23" Y="193"/>
-        <UsageCount Value="2"/>
+        <TopLine Value="187"/>
+        <CursorPos X="21" Y="202"/>
+        <UsageCount Value="10"/>
       </Unit22>
       <Unit23>
         <Filename Value="/usr/lib/codetyphon/fpcsrc/rtl/objpas/sysutils/sysansih.inc"/>
@@ -258,10 +259,12 @@
       </Unit32>
       <Unit33>
         <Filename Value="/usr/lib/codetyphon/typhon/lcl/forms.pp"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="1368"/>
-        <CursorPos X="15" Y="1385"/>
-        <UsageCount Value="6"/>
+        <UnitName Value="Forms"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="48"/>
+        <CursorPos X="41" Y="64"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
       </Unit33>
       <Unit34>
         <Filename Value="/usr/lib/codetyphon/typhon/lcl/include/application.inc"/>
@@ -279,9 +282,10 @@
       </Unit35>
       <Unit36>
         <Filename Value="/usr/lib/codetyphon/typhon/components/synedit/synedit.pp"/>
+        <UnitName Value="SynEdit"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="4205"/>
-        <CursorPos X="3" Y="4210"/>
+        <TopLine Value="1712"/>
+        <CursorPos X="3" Y="1716"/>
         <UsageCount Value="10"/>
       </Unit36>
       <Unit37>
@@ -398,123 +402,123 @@
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="mainform.pas"/>
-        <Caret Line="328" Column="16" TopLine="296"/>
+        <Caret Line="311" TopLine="297"/>
       </Position1>
       <Position2>
-        <Filename Value="configmanagers.pas"/>
-        <Caret Line="70" Column="44" TopLine="47"/>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="516" Column="3" TopLine="512"/>
       </Position2>
       <Position3>
-        <Filename Value="configmanagers.pas"/>
-        <Caret Line="65" Column="62" TopLine="48"/>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="536" Column="116" TopLine="522"/>
       </Position3>
       <Position4>
-        <Filename Value="configmanagers.pas"/>
-        <Caret Line="243" Column="4" TopLine="227"/>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="424" Column="114" TopLine="409"/>
       </Position4>
       <Position5>
-        <Filename Value="configmanagers.pas"/>
-        <Caret Line="65" Column="32" TopLine="50"/>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="536" Column="116" TopLine="520"/>
       </Position5>
       <Position6>
-        <Filename Value="configmanagers.pas"/>
-        <Caret Line="241" Column="43" TopLine="240"/>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="424" Column="114" TopLine="409"/>
       </Position6>
       <Position7>
-        <Filename Value="configmanagers.pas"/>
-        <Caret Line="243" Column="4" TopLine="227"/>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="521" Column="14" TopLine="496"/>
       </Position7>
       <Position8>
         <Filename Value="mainform.pas"/>
-        <Caret Line="312" Column="6" TopLine="294"/>
+        <Caret Line="307" Column="3" TopLine="303"/>
       </Position8>
       <Position9>
         <Filename Value="mainform.pas"/>
-        <Caret Line="313" TopLine="261"/>
+        <Caret Line="308" Column="54" TopLine="303"/>
       </Position9>
       <Position10>
-        <Filename Value="customposmemo.pas"/>
-        <Caret Line="829" TopLine="813"/>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="310" TopLine="303"/>
       </Position10>
       <Position11>
-        <Filename Value="customposmemo.pas"/>
-        <Caret Line="830" TopLine="813"/>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="311" TopLine="303"/>
       </Position11>
       <Position12>
         <Filename Value="mainform.pas"/>
-        <Caret Line="314" TopLine="299"/>
+        <Caret Line="313" TopLine="303"/>
       </Position12>
       <Position13>
-        <Filename Value="configmanagers.pas"/>
-        <Caret Line="245" Column="3" TopLine="240"/>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="315" TopLine="303"/>
       </Position13>
       <Position14>
         <Filename Value="mainform.pas"/>
-        <Caret Line="313" TopLine="299"/>
+        <Caret Line="316" TopLine="303"/>
       </Position14>
       <Position15>
-        <Filename Value="configmanagers.pas"/>
-        <Caret Line="245" TopLine="239"/>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="320" TopLine="303"/>
       </Position15>
       <Position16>
-        <Filename Value="configmanagers.pas"/>
-        <Caret Line="244" Column="56" TopLine="235"/>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="321" Column="47" TopLine="303"/>
       </Position16>
       <Position17>
-        <Filename Value="configmanagers.pas"/>
-        <Caret Line="243" Column="45" TopLine="235"/>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="312" Column="59" TopLine="303"/>
       </Position17>
       <Position18>
-        <Filename Value="configmanagers.pas"/>
-        <Caret Line="68" Column="49" TopLine="52"/>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="310" TopLine="303"/>
       </Position18>
       <Position19>
-        <Filename Value="configmanagers.pas"/>
-        <Caret Line="249" Column="33" TopLine="235"/>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="311" TopLine="303"/>
       </Position19>
       <Position20>
-        <Filename Value="configmanagers.pas"/>
-        <Caret Line="68" Column="14" TopLine="53"/>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="313" TopLine="303"/>
       </Position20>
       <Position21>
-        <Filename Value="configmanagers.pas"/>
-        <Caret Line="69" Column="40" TopLine="53"/>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="315" TopLine="303"/>
       </Position21>
       <Position22>
         <Filename Value="mainform.pas"/>
-        <Caret Line="352" Column="45" TopLine="328"/>
+        <Caret Line="316" TopLine="303"/>
       </Position22>
       <Position23>
         <Filename Value="mainform.pas"/>
-        <Caret Line="310" Column="18" TopLine="292"/>
+        <Caret Line="320" TopLine="303"/>
       </Position23>
       <Position24>
         <Filename Value="mainform.pas"/>
-        <Caret Line="307" Column="77" TopLine="292"/>
+        <Caret Line="321" TopLine="303"/>
       </Position24>
       <Position25>
         <Filename Value="mainform.pas"/>
-        <Caret Line="309" TopLine="292"/>
+        <Caret Line="322" TopLine="303"/>
       </Position25>
       <Position26>
         <Filename Value="mainform.pas"/>
-        <Caret Line="310" TopLine="292"/>
+        <Caret Line="304" Column="4" TopLine="305"/>
       </Position26>
       <Position27>
         <Filename Value="mainform.pas"/>
-        <Caret Line="324" Column="18" TopLine="292"/>
+        <Caret Line="515" Column="3" TopLine="511"/>
       </Position27>
       <Position28>
-        <Filename Value="customposmemo.pas"/>
-        <Caret Line="106" Column="45" TopLine="87"/>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="519" Column="15" TopLine="511"/>
       </Position28>
       <Position29>
-        <Filename Value="customposmemo.pas"/>
-        <Caret Line="817" Column="4" TopLine="796"/>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="157" Column="72" TopLine="144"/>
       </Position29>
       <Position30>
-        <Filename Value="customposmemo.pas"/>
-        <Caret Line="63" Column="12" TopLine="81"/>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="359" Column="22" TopLine="340"/>
       </Position30>
     </JumpHistory>
   </ProjectSession>

@@ -83,8 +83,8 @@ type
     constructor Create(TheOwner: TComponent); override;
     destructor Destroy; override;
     // Работа с файлами
-    procedure New;
-    procedure Open(FileName: String);
+    function New: integer;
+    function Open(FileName: String): Integer;
     procedure Save(FileName: String);
     procedure Close(Index: Integer);
     procedure Close;
@@ -773,11 +773,13 @@ end;
 destructor TCustomPosMemo.Destroy;
 // Уничтожение компонента
 begin
-   CloseAll;
-   OnCloseTab:= nil;
-   fTabs.Free;
-   fPageControl.Free;
-	 inherited Destroy;
+  fPageControl.OnChange:= nil;
+  if AvaibleData then
+    CloseAll;
+  OnCloseTab := nil;
+  fTabs.Free;
+  fPageControl.Free;
+	inherited Destroy;
 end;
 
 procedure TPageControlEx.DoCloseTabClicked(APage: TCustomPage);
@@ -903,7 +905,7 @@ begin
     OnChangeActiveTab(self);
 end;
 
-procedure TCustomPosMemo.New;
+function TCustomPosMemo.New: integer;
 // Добавляем новую вкладку
 var
   TabData: TTabData;
@@ -912,13 +914,13 @@ begin
   TabData.TabSheet.HandleNeeded;
   TabData.TabSheet.Caption := GetNewName;
   TabData.XHash := HashName(PChar(TabData.TabSheet.Caption));
-  fTabs.Add(TabData);
+  Result := fTabs.Add(TabData);
   fPageControl.ActivePage := TabData.TabSheet;
   Application.ProcessMessages;
   OnChangeTab(nil);
 end;
 
-procedure TCustomPosMemo.Open(FileName: String);
+function TCustomPosMemo.Open(FileName: String): Integer;
 // Открытие файла
 var
 	i: Integer;
@@ -927,9 +929,10 @@ begin
     if Items[i].FileName = FileName then
     begin
       fPageControl.ActivePage:= Items[i].TabSheet;
+      Result := i;
       Exit;
 		end;
-  New;
+  Result := New;
   ActiveItem.Memo.Lines.LoadFromFile(FileName);
   ActiveItem.FileName:= FileName;
   ActiveItem.TabSheet.Caption:= ExtractFileName(FileName);

@@ -9,8 +9,7 @@ object FormMain: TFormMain
   Font.Height = -13
   Font.Name = 'Droid Sans'
   Menu = MainMenu
-  OnCloseQuery = FormCloseQuery
-  OnDestroy = FormDestroy
+  OnClose = FormClose
   OnShow = FormShow
   LCLVersion = '1.3'
   object LabelInfo: TLabel
