@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<CONFIG>
-  <Compiler Value="/usr/lib/codetyphon/fpc/fpc32/bin/i386-linux/fpc" Date="1418967503"/>
-  <Params Value=" -Mdelphi -Scghi -O1 -g -gl -vewnhibq -Fu/usr/lib/codetyphon/typhon/components/synedit/units/i386-linux/qt -Fu/usr/lib/codetyphon/typhon/lcl/units/i386-linux/qt -Fu/usr/lib/codetyphon/typhon/lcl/units/i386-linux -Fu/usr/lib/codetyphon/typhon/components/lazutils/lib/i386-linux -Fu/usr/lib/codetyphon/typhon/packager/units/i386-linux -Fu/home/anton/Проекты/POSitron/SubProj/delphigeist-delphi-stuff-read-only/SynMiniMap/demos/simple/ -l -dLCL -dLCLqt -dBorland -dVer150 -dDelphi7 -dCompiler6_Up -dPUREPASCAL Project1.lpr"/>
-</CONFIG>

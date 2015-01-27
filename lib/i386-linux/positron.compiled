@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<CONFIG>
-  <Compiler Value="/usr/lib/codetyphon/fpc/fpc32/bin/i386-linux/fpc" Date="1418967503"/>
-  <Params Value="-Rintel -MObjFPC -Scaghi -Cirot -O1 -Tlinux -g -gl -vewnhibq -Fi/home/anton/Проекты/POSitron/lib/i386-linux -Fu/usr/lib/codetyphon/typhon/components/synunihighlighter/lib/i386-linux/qt -Fu/usr/lib/codetyphon/typhon -Fu/usr/lib/codetyphon/typhon/components/units -Fu/usr/lib/codetyphon/typhon/components/ideintf/units/i386-linux/qt -Fu/usr/lib/codetyphon/typhon/components/synedit/units/i386-linux/qt -Fu/usr/lib/codetyphon/typhon/components/lazcontrols/lib/i386-linux/qt -Fu/usr/lib/codetyphon/typhon/lcl/units/i386-linux/qt -Fu/usr/lib/codetyphon/typhon/lcl/units/i386-linux -Fu/usr/lib/codetyphon/typhon/components/lazutils/lib/i386-linux -Fu/usr/lib/codetyphon/typhon/packager/units/i386-linux -Fu/home/anton/Проекты/POSitron/ -FU/home/anton/Проекты/POSitron/lib/i386-linux/ -l -dLCL -dLCLqt positron.lpr"/>
-</CONFIG>
