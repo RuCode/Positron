@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs,
   ExtCtrls, Menus, StdCtrls, ActnList, StdActns, CustomPosMemo, LResources,
-  FindText, ReplaceText, ConfigManagers;
+  FindText, ReplaceText, ConfigManagers, FileTreeViews;
 
 type
 
@@ -102,17 +102,13 @@ type
     procedure OpenPanel;
     procedure StorePositionToConfig;
     procedure LoadPositionFromConfig;
-    {
-     Проблемы истории:
-      - Не верная прокрутка
-      - Не ясно что будет с файлами без имени (новыми)
-    }
     procedure StoreHistory;
     procedure LoadHistory;
   public
     { public declarations }
     Config: TConfigManager;
     Memo: TCustomPosMemo;
+    FileTreeView: TFileTreeView;
     function LoadTextFromLazarusResource(AName: string): string;
     function OnCloseTab(Sender: TObject): integer;
     procedure OnCloseAllTab(Sender: TObject);
@@ -134,7 +130,17 @@ procedure TFormMain.FormShow(Sender: TObject);
 var
   i: integer;
 begin
-  Memo := TCustomPosMemo.Create(nil);
+  // Дерево
+  FileTreeView:= TFileTreeView.Create(nil);
+  with FileTreeView do
+  begin
+    Parent := FormMain;
+    Width := 200;
+    Align := alLeft;
+	end;
+  FileTreeView.Items.Add(nil, 'Root');
+  // Редактор
+	Memo := TCustomPosMemo.Create(nil);
   with Memo do
   begin
     Parent := FormMain;
@@ -315,11 +321,15 @@ begin
 		end else begin
 		  HistoryItem.FileName := Memo.Items[i].FileName;
     end;
-    {$HINT 'НАДО СОХРАНЯТЬ CARET и SEL_TEXT'}
-    HistoryItem.SelStart := Memo.Items[i].Memo.SelStart;
-    HistoryItem.SelLength := Memo.Items[i].Memo.SelEnd;
-    HistoryItem.TopLine := Memo.Items[i].Memo.TopLine;
-    Config.HistoryFiles[i] := HistoryItem;
+    with Memo.Items[i] do
+    begin
+	    HistoryItem.SelStart := Memo.SelStart;
+	    HistoryItem.SelLength := Memo.SelEnd;
+	    HistoryItem.TopLine := Memo.TopLine;
+	    HistoryItem.Caret := Memo.CaretXY;
+	    HistoryItem.SelAvail := Memo.SelAvail;
+	    Config.HistoryFiles[i] := HistoryItem;
+    end;
 	end;
   if Memo.AvaibleData then
     Config.ActiveTab := Memo.ItemIndex;
@@ -352,11 +362,14 @@ begin
     // Если файл был сохранён
 	    CurrentTab := Memo.Open(HistoryItem.FileName);
     // Загрузска параметров
-	  Memo.Items[CurrentTab].Memo.SelStart := HistoryItem.SelStart;
-    if HistoryItem.SelStart <> HistoryItem.SelLength then
+    {$HINT 'Проблемы с восстановлением выделения текста'}
+    if HistoryItem.SelAvail then
+    begin
+	    Memo.Items[CurrentTab].Memo.SelStart := HistoryItem.SelStart;
 	    Memo.Items[CurrentTab].Memo.SelEnd := HistoryItem.SelLength;
+		end else
+		  Memo.Items[CurrentTab].Memo.CaretXY := HistoryItem.Caret;
     Memo.Items[CurrentTab].Memo.TopLine := HistoryItem.TopLine;
-    {$HINT 'НАДО ВОССТАНАВЛИВАТЬ CARET и SEL_TEXT'}
 	end;
   Memo.ItemIndex := Config.ActiveTab;
 	Config.EndUpdate;

@@ -22,6 +22,9 @@ const
   ITEM_SELSTART = 'SELSTART_';
   ITEM_SELLEN = 'SELLEN_';
   ITEM_TOPLINE = 'TOPLINE_';
+  ITEM_CARETX = 'CARET_X_';
+  ITEM_CARETY = 'CARET_Y_';
+  ITEM_SELAVAIL = 'SELECT_AVAIBLE_';
   ITEM_ACTIVETAB = 'ACTIVE_TAB';
 
 type
@@ -30,6 +33,8 @@ type
     SelStart: integer;
     SelLength: integer;
     TopLine: integer;
+    Caret: TPoint;
+    SelAvail: boolean;
   end;
 
 type
@@ -121,6 +126,9 @@ begin
   Result.SelStart := fIniFile.ReadInteger(SECTION_HISTORY, ITEM_SELSTART + IntToStr(Index), 0);
   Result.SelLength := fIniFile.ReadInteger(SECTION_HISTORY, ITEM_SELLEN + IntToStr(Index), 0);
   Result.TopLine := fIniFile.ReadInteger(SECTION_HISTORY, ITEM_TOPLINE + IntToStr(Index), 0);
+  Result.Caret.X := fIniFile.ReadInteger(SECTION_HISTORY, ITEM_CARETX + IntToStr(Index), 0);
+  Result.Caret.Y := fIniFile.ReadInteger(SECTION_HISTORY, ITEM_CARETY + IntToStr(Index), 0);
+  Result.SelAvail := fIniFile.ReadBool(SECTION_HISTORY, ITEM_SELAVAIL + IntToStr(Index), False);
   Close;
 end;
 
@@ -173,6 +181,9 @@ begin
   fIniFile.WriteInteger(SECTION_HISTORY, ITEM_SELSTART + IntToStr(Index), AValue.SelStart);
   fIniFile.WriteInteger(SECTION_HISTORY, ITEM_SELLEN + IntToStr(Index), AValue.SelLength);
   fIniFile.WriteInteger(SECTION_HISTORY, ITEM_TOPLINE + IntToStr(Index), AValue.TopLine);
+  fIniFile.WriteInteger(SECTION_HISTORY, ITEM_CARETX + IntToStr(Index), AValue.Caret.X);
+  fIniFile.WriteInteger(SECTION_HISTORY, ITEM_CARETY + IntToStr(Index), AValue.Caret.Y);
+  fIniFile.WriteBool(SECTION_HISTORY, ITEM_SELAVAIL + IntToStr(Index), AValue.SelAvail);
   Close;
 end;
 

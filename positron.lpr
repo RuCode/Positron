@@ -9,7 +9,7 @@ uses {$IFDEF UNIX} {$IFDEF UseCThreads}
   synuni,
   MainForm,
   CustomPosMemo, FindText, ReplaceText, PositronUtils, ThemeManagers, 
-FileTreeViews, ConfigManagers;
+FileTreeViews, ConfigManagers, pl_virtualtrees;
 
 {$R *.res}
 
