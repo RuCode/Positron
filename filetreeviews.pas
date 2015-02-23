@@ -20,25 +20,134 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics,
-  Dialogs, ComCtrls;
+  Dialogs, ComCtrls, ExtCtrls, LResources;
+
+const
+  IMAGES_FOLDER = 'folder';
+  IMAGES_FILEPAS = 'text-x-pascal';
 
 type
+  TTreeViewState = (tvsFolder, tvsProject, tvsForms, tvsUnit);
 
-	{ TFileTreeView }
+  { TFileTreeView }
 
   TFileTreeView = class(TTreeView)
+  private
+    fState: TTreeViewState;
+    fImages: TImageList;
   public
-    procedure OpenFolder(APath: String);
+    constructor Create(AnOwner: TComponent); override;
+    destructor Destroy; override;
+    procedure OpenFolder(APath: string; ParentNode: TTreeNode = nil);
+    procedure OpenProject(APath: string);
+    procedure OpenForms(APath: string);
+    procedure OpenUnit(APath: string);
   end;
+
+function ExtractLastDir(DirPath: string): string;
 
 implementation
 
+function ExtractLastDir(DirPath: string): string;
+var
+  i, fromDel: integer;
+begin
+  fromDel := -1;
+  for i := Length(DirPath) downto 1 do
+    if DirPath[i] = DirectorySeparator then
+    begin
+      if i = Length(DirPath) then
+        Continue;
+      fromDel := i;
+      Break;
+    end;
+  SetLength(Result, Length(DirPath) - fromDel);
+  for i := fromDel to Length(DirPath) - 1 do
+    Result[i - fromDel + 1] := DirPath[i + 1];
+end;
+
 { TFileTreeView }
 
-procedure TFileTreeView.OpenFolder(APath: String);
+constructor TFileTreeView.Create(AnOwner: TComponent);
+begin
+  inherited Create(AnOwner);
+  fImages := TImageList.Create(self);
+  fImages.Width := 24;
+  fImages.Height := 24;
+  fImages.AddLazarusResource(IMAGES_FOLDER);
+  fImages.AddLazarusResource(IMAGES_FILEPAS);
+  self.Images := fImages;
+  self.StateImages := fImages;
+  fState := tvsFolder;
+end;
+
+destructor TFileTreeView.Destroy;
+begin
+  fImages.Free;
+  inherited Destroy;
+end;
+
+procedure TFileTreeView.OpenFolder(APath: string; ParentNode: TTreeNode = nil);
+var
+  Info: TSearchRec;
+  RootNode: TTreeNode;
+begin
+  // Если первый раз попали сюда
+  if ParentNode = nil then
+  begin
+    Items.Clear;
+    fState := tvsFolder;
+    RootNode := Items.Add(nil, ExtractLastDir(APath));
+    RootNode.ImageIndex := 0;
+    RootNode.SelectedIndex := 0;
+    //RootNode.StateIndex := 0;
+  end
+  else
+  begin
+    RootNode := Items.AddChildFirst(ParentNode, ExtractLastDir(APath));
+    RootNode.ImageIndex := 0;
+    RootNode.SelectedIndex := 0;
+    //RootNode.StateIndex := 0;
+  end;
+
+  if FindFirst(APath + '*', faAnyFile and faDirectory, Info) = 0 then
+  begin
+    repeat
+      with Info do
+      begin
+        if (Name = '.') or (Name = '..') then
+          Continue;
+        if (Attr and faDirectory) = faDirectory then
+          OpenFolder(APath + Name + DirectorySeparator, RootNode)
+        else
+          with Items.AddChild(RootNode, Name) do
+          begin
+            ImageIndex := 1;
+            SelectedIndex := 1;
+          //  StateIndex := 1;
+          end;
+      end;
+    until FindNext(info) <> 0;
+  end;
+  FindClose(Info);
+end;
+
+procedure TFileTreeView.OpenProject(APath: string);
 begin
 
 end;
 
-end.
+procedure TFileTreeView.OpenForms(APath: string);
+begin
 
+end;
+
+procedure TFileTreeView.OpenUnit(APath: string);
+begin
+
+end;
+
+initialization
+  {$I treeview.lrs}
+
+end.
