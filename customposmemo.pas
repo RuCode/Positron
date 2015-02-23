@@ -8,9 +8,8 @@ interface
 
 uses
   SynMemo, SynHighlighterPas, SynHighlighterAny, SynEditTypes, Graphics,
-  SynCompletion, SynEdit, SynUniHighlighter, Dialogs, Forms, SynEditMarks,
-  ComCtrls, fgl, Controls, LCLType, Classes, SysUtils, SynEditKeyCmds,
-  PositronUtils;
+  SynCompletion, SynEdit, SynUniHighlighter, Dialogs, Forms,// SynEditMarks,
+  ComCtrls, fgl, Controls, LCLType, Classes, SysUtils, SynEditKeyCmds;
 
 
 type
@@ -146,6 +145,7 @@ begin
    begin
      Special := True;
      BG := SelectedLineList[LineIndex].Color;
+     FG := FG; // No hint
    end;
 end;
 

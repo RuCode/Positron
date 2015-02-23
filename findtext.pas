@@ -41,6 +41,8 @@ begin
     ButtonClick(Sender)
   else
     inherited;
+  if ssShift in Shift then
+    // no hint;
 end;
 
 end.

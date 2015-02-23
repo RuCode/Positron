@@ -17,7 +17,7 @@ type
     ButtonReplaceAll: TButton;
     EditSearch: TEdit;
     EditReplace: TEdit;
-		procedure ButtonReplaceAllClick(Sender: TObject);
+    procedure ButtonReplaceAllClick(Sender: TObject);
     procedure ButtonReplaceClick(Sender: TObject);
     procedure EditSearchKeyUp(Sender: TObject; var Key: word; Shift: TShiftState);
   private
@@ -40,12 +40,12 @@ begin
   begin
     Memo.SelText := EditReplace.Text;
     Memo.SelectLine();
-	end;
+  end;
 end;
 
 procedure TFrameReplaceText.ButtonReplaceAllClick(Sender: TObject);
 var
-  AvailText: Boolean;
+  AvailText: boolean;
 begin
   AvailText := True;
   while AvailText do
@@ -54,8 +54,10 @@ begin
     if Memo.SelAvail then
     begin
       Memo.SelText := EditReplace.Text;
-  	end else AvailText := False;
-	end;
+    end
+    else
+      AvailText := False;
+  end;
 end;
 
 procedure TFrameReplaceText.EditSearchKeyUp(Sender: TObject; var Key: word; Shift: TShiftState);
@@ -64,9 +66,9 @@ begin
     ButtonReplaceClick(Sender)
   else
     inherited;
+  if ssShift in Shift then;
+    // no hint;
 end;
 
 end.
-
-
 

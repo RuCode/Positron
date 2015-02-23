@@ -17,6 +17,7 @@ type
 	  MenuDebug: TMenuItem;
 		MenuItem2: TMenuItem;
 		MenuItem3: TMenuItem;
+    MenuItem4: TMenuItem;
 		MenuSelect: TMenuItem;
 	  MenuReplaceText: TMenuItem;
 		SearchAndReplace: TAction;
@@ -91,6 +92,7 @@ type
     procedure FormShow(Sender: TObject);
 		procedure MenuItem2Click(Sender: TObject);
 		procedure MenuItem3Click(Sender: TObject);
+    procedure MenuItem4Click(Sender: TObject);
 		procedure MenuSelectClick(Sender: TObject);
 		procedure SearchAndReplaceExecute(Sender: TObject);
 		procedure SearchTextExecute(Sender: TObject);
@@ -172,6 +174,11 @@ end;
 procedure TFormMain.MenuItem3Click(Sender: TObject);
 begin
   Memo.ActiveItem.Memo.TopLine:= 10;
+end;
+
+procedure TFormMain.MenuItem4Click(Sender: TObject);
+begin
+  FileTreeView.OpenFolder('/home/anton/documents/Positron/');
 end;
 
 procedure TFormMain.MenuSelectClick(Sender: TObject);

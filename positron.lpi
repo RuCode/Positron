@@ -77,6 +77,7 @@
         <ComponentName Value="FrameFindText"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Frame"/>
+        <UnitName Value="FindText"/>
       </Unit6>
       <Unit7>
         <Filename Value="replacetext.pas"/>
@@ -84,10 +85,12 @@
         <ComponentName Value="FrameReplaceText"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Frame"/>
+        <UnitName Value="ReplaceText"/>
       </Unit7>
       <Unit8>
         <Filename Value="positronutils.pas"/>
         <IsPartOfProject Value="True"/>
+        <UnitName Value="PositronUtils"/>
       </Unit8>
       <Unit9>
         <Filename Value="thememanagers.pas"/>
@@ -128,7 +131,6 @@
         <OverflowChecks Value="True"/>
         <StackChecks Value="True"/>
       </Checks>
-      <TargetOS Value="linux"/>
     </CodeGeneration>
     <Linking>
       <Options>
