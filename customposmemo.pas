@@ -38,11 +38,10 @@ type
     Memo: TSynMemo;
     TabSheet: TTabSheet;
     SelectedLineList: TColorLineList;
-    procedure OnSpecialLineColors(Sender: TObject; Line: integer;
-      var Special: boolean; var FG, BG: TColor);
-
     constructor Create(ATag: Integer; fPageControl: TPageControlEx); virtual;
     destructor Destroy; override;
+    procedure OnSpecialLineColors(Sender: TObject; Line: integer;
+      var Special: boolean; var FG, BG: TColor);
   end;
 
   { TTabList - Массив данных для каждой вкладки }

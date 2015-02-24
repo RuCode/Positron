@@ -35,6 +35,8 @@ type
   private
     fState: TTreeViewState;
     fImages: TImageList;
+  protected
+    procedure DblClick; override;
   public
     constructor Create(AnOwner: TComponent); override;
     destructor Destroy; override;
@@ -68,6 +70,16 @@ end;
 
 { TFileTreeView }
 
+procedure TFileTreeView.DblClick;
+begin
+  inherited DblClick;
+  if (tvsFolder = fState) and Assigned(Selected) then
+  begin
+    ShowMessage(Selected.Text);
+    {$Message 'Тут следует вызвать событие для открытия файла по двойному клику'}
+  end;
+end;
+
 constructor TFileTreeView.Create(AnOwner: TComponent);
 begin
   inherited Create(AnOwner);
@@ -100,16 +112,14 @@ begin
     RootNode := Items.Add(nil, ExtractLastDir(APath));
     RootNode.ImageIndex := 0;
     RootNode.SelectedIndex := 0;
-    //RootNode.StateIndex := 0;
   end
   else
   begin
     RootNode := Items.AddChildFirst(ParentNode, ExtractLastDir(APath));
     RootNode.ImageIndex := 0;
     RootNode.SelectedIndex := 0;
-    //RootNode.StateIndex := 0;
   end;
-
+  // Проходим по файлам
   if FindFirst(APath + '*', faAnyFile and faDirectory, Info) = 0 then
   begin
     repeat

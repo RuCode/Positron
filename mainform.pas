@@ -14,14 +14,14 @@ type
   { TFormMain }
 
   TFormMain = class(TForm)
-	  MenuDebug: TMenuItem;
-		MenuItem2: TMenuItem;
-		MenuItem3: TMenuItem;
+    MenuDebug: TMenuItem;
+    MenuItem2: TMenuItem;
+    MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
-		MenuSelect: TMenuItem;
-	  MenuReplaceText: TMenuItem;
-		SearchAndReplace: TAction;
-		SearchText: TAction;
+    MenuSelect: TMenuItem;
+    MenuReplaceText: TMenuItem;
+    SearchAndReplace: TAction;
+    SearchText: TAction;
     FileCloseAllFiles: TAction;
     FileCloseOtherFiles: TAction;
     FileCloseFile: TAction;
@@ -48,8 +48,8 @@ type
     MenuCloseAll: TMenuItem;
     MenuCloseOther: TMenuItem;
     MenuEdit: TMenuItem;
-		MenuItem1: TMenuItem;
-		MenuFindText: TMenuItem;
+    MenuItem1: TMenuItem;
+    MenuFindText: TMenuItem;
     MenuNewDynLib: TMenuItem;
     MenuNewForm: TMenuItem;
     MenuNewUnit: TMenuItem;
@@ -74,12 +74,12 @@ type
     MenuSep1: TMenuItem;
     MenuSep2: TMenuItem;
     MenuSaveAs: TMenuItem;
-		procedure EditRedoExecute(Sender: TObject);
-		procedure EditRedoUpdate(Sender: TObject);
+    procedure EditRedoExecute(Sender: TObject);
+    procedure EditRedoUpdate(Sender: TObject);
     procedure FileNewDynLibraryExecute(Sender: TObject);
     procedure FileNewUnitExecute(Sender: TObject);
     procedure FileSaveAsBeforeExecute(Sender: TObject);
-		procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure IsFileUpdate(Sender: TObject);
     procedure FileCloseAllFilesExecute(Sender: TObject);
     procedure FileCloseFileExecute(Sender: TObject);
@@ -90,12 +90,12 @@ type
     procedure FileSaveAsAccept(Sender: TObject);
     procedure FileSaveExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
-		procedure MenuItem2Click(Sender: TObject);
-		procedure MenuItem3Click(Sender: TObject);
+    procedure MenuItem2Click(Sender: TObject);
+    procedure MenuItem3Click(Sender: TObject);
     procedure MenuItem4Click(Sender: TObject);
-		procedure MenuSelectClick(Sender: TObject);
-		procedure SearchAndReplaceExecute(Sender: TObject);
-		procedure SearchTextExecute(Sender: TObject);
+    procedure MenuSelectClick(Sender: TObject);
+    procedure SearchAndReplaceExecute(Sender: TObject);
+    procedure SearchTextExecute(Sender: TObject);
   private
     { private declarations }
     Panel: TPanel;
@@ -133,16 +133,16 @@ var
   i: integer;
 begin
   // Дерево
-  FileTreeView:= TFileTreeView.Create(nil);
+  FileTreeView := TFileTreeView.Create(nil);
   with FileTreeView do
   begin
     Parent := FormMain;
     Width := 200;
     Align := alLeft;
-	end;
+  end;
   FileTreeView.Items.Add(nil, 'Root');
   // Редактор
-	Memo := TCustomPosMemo.Create(nil);
+  Memo := TCustomPosMemo.Create(nil);
   with Memo do
   begin
     Parent := FormMain;
@@ -151,13 +151,13 @@ begin
   Memo.OnCloseTab := @OnCloseTab;
   Memo.OnCloseAllTab := @OnCloseAllTab;
   Memo.OnCloseOtherTab := @OnCloseOtherTab;
-  Memo.OnChangeActiveTab:= @OnChangeActiveTab;
-  Caption:= 'Positron';
+  Memo.OnChangeActiveTab := @OnChangeActiveTab;
+  Caption := 'Positron';
   for i := 1 to Paramcount do
     Memo.Open(ParamStrUTF8(i));
-  Application.Name:= 'Positron';
+  Application.Name := 'Positron';
   // Конфигурация
-  Config:= TConfigManager.Create;
+  Config := TConfigManager.Create;
   LoadPositionFromConfig;
   LoadHistory;
 end;
@@ -166,14 +166,14 @@ procedure TFormMain.MenuItem2Click(Sender: TObject);
 begin
   with Memo.ActiveItem do
   begin
-    Memo.CaretX:= Memo.CaretX + 10;
-    Memo.CaretY:= Memo.CaretY + 10;
-	end;
+    Memo.CaretX := Memo.CaretX + 10;
+    Memo.CaretY := Memo.CaretY + 10;
+  end;
 end;
 
 procedure TFormMain.MenuItem3Click(Sender: TObject);
 begin
-  Memo.ActiveItem.Memo.TopLine:= 10;
+  Memo.ActiveItem.Memo.TopLine := 10;
 end;
 
 procedure TFormMain.MenuItem4Click(Sender: TObject);
@@ -214,12 +214,12 @@ begin
   if Assigned(Panel) then
   begin
     FrameReplace := TFrameReplaceText.Create(Panel);
-    FrameReplace.Parent:= Panel;
-    Panel.Height:= FrameReplace.Height;
-    FrameReplace.Align:= alClient;
+    FrameReplace.Parent := Panel;
+    Panel.Height := FrameReplace.Height;
+    FrameReplace.Align := alClient;
     FrameReplace.EditSearch.SetFocus;
     FrameReplace.Memo := Memo.ActiveItem.Memo;
-	end;
+  end;
 end;
 
 procedure TFormMain.SearchTextExecute(Sender: TObject);
@@ -233,12 +233,12 @@ begin
   if Assigned(Panel) then
   begin
     FrameFind := TFrameFindText.Create(Panel);
-    FrameFind.Parent:= Panel;
-    Panel.Height:= FrameFind.Height;
-    FrameFind.Align:= alClient;
+    FrameFind.Parent := Panel;
+    Panel.Height := FrameFind.Height;
+    FrameFind.Align := alClient;
     FrameFind.Edit.SetFocus;
     FrameFind.Memo := Memo.ActiveItem.Memo;
-	end;
+  end;
 end;
 
 procedure TFormMain.UpdateMainFormCaption;
@@ -246,28 +246,29 @@ procedure TFormMain.UpdateMainFormCaption;
 begin
   exit;
   if Memo.IsEmpty then
-    Caption:= Application.Name
+    Caption := Application.Name
   else
-    if Memo.FileName <> '' then
-      Caption:= Application.Name + ': ' + ExtractFileName(Memo.ActiveItem.FileName)
-    else
-      Caption:= Application.Name;
+  if Memo.FileName <> '' then
+    Caption := Application.Name + ': ' + ExtractFileName(Memo.ActiveItem.FileName)
+  else
+    Caption := Application.Name;
 end;
 
 procedure TFormMain.ClosePanel;
 // Закрытие панели
 var
-		i: Integer;
+  i: integer;
 begin
-  if not Assigned(Panel) then exit;
-  for i:= 0 to Panel.ComponentCount -1 do
+  if not Assigned(Panel) then
+    exit;
+  for i := 0 to Panel.ComponentCount - 1 do
   begin
     try
       Panel.Components[i].Free;
-		except
-      //
-		end;
-	end;
+    except
+
+    end;
+  end;
   FreeAndNil(Panel);
 end;
 
@@ -275,9 +276,9 @@ procedure TFormMain.OpenPanel;
 // Открытие панели
 begin
   ClosePanel;
-  Panel:= TPanel.Create(self);
-  Panel.Parent:= FormMain;
-  Panel.Align:= alBottom;
+  Panel := TPanel.Create(self);
+  Panel.Parent := FormMain;
+  Panel.Align := alBottom;
 end;
 
 procedure TFormMain.StorePositionToConfig;
@@ -305,14 +306,14 @@ end;
 procedure TFormMain.StoreHistory;
 // Сохраняем открытые файлы
 
-  function IsNewFile(Memo: TCustomPosMemo; Index: Integer): Boolean;
+  function IsNewFile(Memo: TCustomPosMemo; Index: integer): boolean;
   begin
-     Result := (Memo.Items[Index].FileName = '');
-     Result := Result and (Memo.Items[Index].TabSheet.Caption <> '');
-	end;
+    Result := (Memo.Items[Index].FileName = '');
+    Result := Result and (Memo.Items[Index].TabSheet.Caption <> '');
+  end;
 
 var
-  i: Integer;
+  i: integer;
   HistoryItem: THistoryItem;
 begin
   if not Assigned(Config) then
@@ -325,28 +326,30 @@ begin
     begin
       Config.SaveTextFile(Memo.Items[i].Memo.Lines.Text, i);
       HistoryItem.FileName := Config.GetTmpFile(i);
-		end else begin
-		  HistoryItem.FileName := Memo.Items[i].FileName;
+    end
+    else
+    begin
+      HistoryItem.FileName := Memo.Items[i].FileName;
     end;
     with Memo.Items[i] do
     begin
-	    HistoryItem.SelStart := Memo.SelStart;
-	    HistoryItem.SelLength := Memo.SelEnd;
-	    HistoryItem.TopLine := Memo.TopLine;
-	    HistoryItem.Caret := Memo.CaretXY;
-	    HistoryItem.SelAvail := Memo.SelAvail;
-	    Config.HistoryFiles[i] := HistoryItem;
+      HistoryItem.SelStart := Memo.SelStart;
+      HistoryItem.SelLength := Memo.SelEnd;
+      HistoryItem.TopLine := Memo.TopLine;
+      HistoryItem.Caret := Memo.CaretXY;
+      HistoryItem.SelAvail := Memo.SelAvail;
+      Config.HistoryFiles[i] := HistoryItem;
     end;
-	end;
+  end;
   if Memo.AvaibleData then
     Config.ActiveTab := Memo.ItemIndex;
-	Config.EndUpdate;
+  Config.EndUpdate;
 end;
 
 procedure TFormMain.LoadHistory;
 // Открываем файлы из истории
 var
-  i, Count, CurrentTab: Integer;
+  i, Count, CurrentTab: integer;
   HistoryItem: THistoryItem;
 begin
   if not Assigned(Config) then
@@ -355,36 +358,38 @@ begin
   Count := Config.HistoryCount;
   if Count = -1 then
     exit;
-	for i := 0 to Count - 1 do
-	begin
-	  HistoryItem := Config.HistoryFiles[i];
+  for i := 0 to Count - 1 do
+  begin
+    HistoryItem := Config.HistoryFiles[i];
     // Если файл не был сохранён
     if Config.IsTmpFile(HistoryItem.FileName) then
     begin
       CurrentTab := Memo.New;
       Memo.Items[CurrentTab].Memo.Lines.LoadFromFile(HistoryItem.FileName);
-      Memo.Items[CurrentTab].Memo.Modified:= True;
+      Memo.Items[CurrentTab].Memo.Modified := True;
       DeleteFileUTF8(HistoryItem.FileName);
-    end else
-    // Если файл был сохранён
-	    CurrentTab := Memo.Open(HistoryItem.FileName);
+    end
+    else
+      // Если файл был сохранён
+      CurrentTab := Memo.Open(HistoryItem.FileName);
     // Загрузска параметров
-    {$HINT 'Проблемы с восстановлением выделения текста'}
+    {$Message 'Проблемы с восстановлением выделения текста'}
     if HistoryItem.SelAvail then
     begin
-	    Memo.Items[CurrentTab].Memo.SelStart := HistoryItem.SelStart;
-	    Memo.Items[CurrentTab].Memo.SelEnd := HistoryItem.SelLength;
-		end else
-		  Memo.Items[CurrentTab].Memo.CaretXY := HistoryItem.Caret;
+      Memo.Items[CurrentTab].Memo.SelStart := HistoryItem.SelStart;
+      Memo.Items[CurrentTab].Memo.SelEnd := HistoryItem.SelLength;
+    end
+    else
+      Memo.Items[CurrentTab].Memo.CaretXY := HistoryItem.Caret;
     Memo.Items[CurrentTab].Memo.TopLine := HistoryItem.TopLine;
-	end;
+  end;
   Memo.ItemIndex := Config.ActiveTab;
-	Config.EndUpdate;
+  Config.EndUpdate;
   DeleteFileUTF8(Config.ConfigName);
 end;
 
 function TFormMain.LoadTextFromLazarusResource(AName: string): string;
-// Загрузка текста из ресурсов
+  // Загрузка текста из ресурсов
 var
   r: TLResource;
 begin
@@ -395,7 +400,7 @@ begin
 end;
 
 function TFormMain.OnCloseTab(Sender: TObject): integer;
-// Закрытие вкладки
+  // Закрытие вкладки
 var
   res: TModalResult;
 begin
@@ -405,7 +410,7 @@ begin
   if Memo.Modified then
   begin
     res := MessageDlg('Вопрос', 'Файл ' + ExtractFileName(Memo.FileName) + ' был изменён, сохранить изменения?',
-                      mtConfirmation, mbYesNoCancel, '');
+      mtConfirmation, mbYesNoCancel, '');
     case res of
       mrYes:
       begin
@@ -420,8 +425,8 @@ begin
         end;
       end;
       mrNo: Result := mrOk;
-    else
-      Result := mrAbort;
+      else
+        Result := mrAbort;
     end;
   end;
 end;
@@ -429,25 +434,25 @@ end;
 procedure TFormMain.OnCloseAllTab(Sender: TObject);
 // Закрытие всех вкладок
 var
-  Modified: Boolean;
-	i: Integer;
-	res: TModalResult;
+  Modified: boolean;
+  i: integer;
+  res: TModalResult;
 begin
   if Memo.IsEmpty then
     exit;
   // Узнаём наличие модифицированных файлов
-  Modified:= False;
-  for i:= 0 to Memo.Count - 1 do
-    Modified:= Modified or Memo.Items[i].Memo.Modified;
+  Modified := False;
+  for i := 0 to Memo.Count - 1 do
+    Modified := Modified or Memo.Items[i].Memo.Modified;
   // Вопрос и сохранение
   res := MessageDlg('Вопрос', 'Есть изменённые файлы, желаете сохранить?', mtConfirmation, mbYesNo, '');
   if res = mrYes then
-    for i:= 0 to Memo.Count - 1 do
-	    if Memo.Items[i].Memo.Modified then
+    for i := 0 to Memo.Count - 1 do
+      if Memo.Items[i].Memo.Modified then
       begin
-        Memo.ItemIndex:= i;
+        Memo.ItemIndex := i;
         FileSave.Execute;
-			end;
+      end;
 end;
 
 procedure TFormMain.OnCloseOtherTab(Sender: TObject);
@@ -460,7 +465,14 @@ end;
 procedure TFormMain.OnChangeActiveTab(Sender: TObject);
 // Действия при смене активной вкладки
 begin
-   UpdateMainFormCaption;
+  UpdateMainFormCaption;
+  if FileExistsUTF8(Memo.FileName) then
+  begin
+    FileTreeView.OpenFolder(ExtractFilePath(Memo.FileName));
+    FileTreeView.Items[0].Expand(False);
+  end
+  else
+    FileTreeView.Items.Clear;
 end;
 
 procedure TFormMain.FileNewBlankExecute(Sender: TObject);
@@ -557,13 +569,14 @@ end;
 procedure TFormMain.EditRedoUpdate(Sender: TObject);
 // Обновление экшена для редо
 begin
-  Inherited;
+  inherited;
   if Memo.IsEmpty then
   begin
     TAction(Sender).Enabled := False;
     exit;
-	end else
-	  TAction(Sender).Enabled := Memo.ActiveItem.Memo.CanRedo;
+  end
+  else
+    TAction(Sender).Enabled := Memo.ActiveItem.Memo.CanRedo;
 end;
 
 procedure TFormMain.FileCloseOtherFilesExecute(Sender: TObject);

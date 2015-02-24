@@ -10,7 +10,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="3"/>
         <CursorPos X="5" Y="20"/>
-        <UsageCount Value="110"/>
+        <UsageCount Value="111"/>
       </Unit0>
       <Unit1>
         <Filename Value="mainform.pas"/>
@@ -19,18 +19,21 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="MainForm"/>
-        <CursorPos X="75" Y="9"/>
-        <ComponentState Value="1"/>
-        <UsageCount Value="110"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="366"/>
+        <CursorPos X="14" Y="376"/>
+        <UsageCount Value="111"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="customposmemo.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="CustomPosMemo"/>
         <EditorIndex Value="1"/>
-        <CursorPos X="52" Y="12"/>
-        <UsageCount Value="109"/>
+        <TopLine Value="1040"/>
+        <CursorPos X="26" Y="78"/>
+        <UsageCount Value="110"/>
         <Loaded Value="True"/>
       </Unit2>
       <Unit3>
@@ -38,7 +41,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="97" Y="7"/>
-        <UsageCount Value="79"/>
+        <UsageCount Value="80"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit3>
       <Unit4>
@@ -46,7 +49,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="45" Y="4"/>
-        <UsageCount Value="78"/>
+        <UsageCount Value="79"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit4>
       <Unit5>
@@ -54,7 +57,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="157"/>
-        <UsageCount Value="77"/>
+        <UsageCount Value="78"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit5>
       <Unit6>
@@ -67,7 +70,7 @@
         <EditorIndex Value="2"/>
         <TopLine Value="20"/>
         <CursorPos X="26" Y="45"/>
-        <UsageCount Value="60"/>
+        <UsageCount Value="61"/>
         <Loaded Value="True"/>
       </Unit6>
       <Unit7>
@@ -76,17 +79,15 @@
         <ComponentName Value="FrameReplaceText"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Frame"/>
-        <UnitName Value="ReplaceText"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="55"/>
+        <UsageCount Value="56"/>
       </Unit7>
       <Unit8>
         <Filename Value="positronutils.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="PositronUtils"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="4"/>
-        <UsageCount Value="53"/>
+        <UsageCount Value="54"/>
       </Unit8>
       <Unit9>
         <Filename Value="thememanagers.pas"/>
@@ -94,28 +95,27 @@
         <UnitName Value="ThemeManagers"/>
         <EditorIndex Value="3"/>
         <CursorPos X="26" Y="8"/>
-        <UsageCount Value="41"/>
+        <UsageCount Value="42"/>
         <Loaded Value="True"/>
       </Unit9>
       <Unit10>
         <Filename Value="filetreeviews.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="FileTreeViews"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="4"/>
-        <TopLine Value="97"/>
-        <CursorPos X="7" Y="103"/>
-        <UsageCount Value="41"/>
+        <TopLine Value="68"/>
+        <CursorPos X="6" Y="79"/>
+        <UsageCount Value="42"/>
         <Loaded Value="True"/>
       </Unit10>
       <Unit11>
         <Filename Value="configmanagers.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ConfigManagers"/>
-        <EditorIndex Value="6"/>
-        <TopLine Value="259"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="257"/>
         <CursorPos Y="278"/>
-        <UsageCount Value="41"/>
+        <UsageCount Value="42"/>
         <Loaded Value="True"/>
       </Unit11>
       <Unit12>
@@ -136,28 +136,27 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="975"/>
         <CursorPos X="3" Y="990"/>
-        <UsageCount Value="0"/>
+        <UsageCount Value="10"/>
       </Unit14>
       <Unit15>
         <Filename Value="/usr/lib/codetyphon/typhon/lcl/lclclasses.pp"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="10"/>
         <CursorPos X="10" Y="26"/>
-        <UsageCount Value="0"/>
+        <UsageCount Value="10"/>
       </Unit15>
       <Unit16>
         <Filename Value="/usr/lib/codetyphon/typhon/lcl/comctrls.pp"/>
         <UnitName Value="ComCtrls"/>
-        <EditorIndex Value="5"/>
-        <TopLine Value="3095"/>
-        <CursorPos Y="3105"/>
-        <UsageCount Value="10"/>
-        <Loaded Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="3131"/>
+        <CursorPos X="3" Y="3146"/>
+        <UsageCount Value="11"/>
       </Unit16>
       <Unit17>
         <Filename Value="/usr/lib/codetyphon/typhon/components/synedit/syncompletion.pas"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="0"/>
+        <UsageCount Value="10"/>
       </Unit17>
       <Unit18>
         <Filename Value="/usr/lib/codetyphon/fpcsrc/rtl/objpas/fgl.pp"/>
@@ -168,10 +167,11 @@
       </Unit18>
       <Unit19>
         <Filename Value="/usr/lib/codetyphon/typhon/lcl/controls.pp"/>
+        <UnitName Value="Controls"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="347"/>
-        <CursorPos X="30" Y="364"/>
-        <UsageCount Value="8"/>
+        <TopLine Value="1309"/>
+        <CursorPos X="36" Y="1314"/>
+        <UsageCount Value="10"/>
       </Unit19>
       <Unit20>
         <Filename Value="/usr/lib/codetyphon/fpcsrc/rtl/unix/classes.pp"/>
@@ -227,7 +227,6 @@
       </Unit27>
       <Unit28>
         <Filename Value="/usr/lib/codetyphon/typhon/lcl/graphics.pp"/>
-        <UnitName Value="Graphics"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="2196"/>
         <CursorPos X="10" Y="2204"/>
@@ -263,7 +262,6 @@
       </Unit32>
       <Unit33>
         <Filename Value="/usr/lib/codetyphon/typhon/lcl/forms.pp"/>
-        <UnitName Value="Forms"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="48"/>
         <CursorPos X="41" Y="64"/>
@@ -423,7 +421,6 @@
       </Unit55>
       <Unit56>
         <Filename Value="/usr/lib/codetyphon/typhon/lcl/imglist.pp"/>
-        <UnitName Value="ImgList"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="156"/>
         <CursorPos X="20" Y="168"/>
@@ -447,131 +444,123 @@
         <UsageCount Value="10"/>
       </Unit59>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="28" HistoryIndex="27">
       <Position1>
-        <Filename Value="/usr/lib/codetyphon/typhon/lcl/comctrls.pp"/>
-        <Caret Line="1286" Column="49" TopLine="1276"/>
-      </Position1>
-      <Position2>
-        <Filename Value="/usr/lib/codetyphon/typhon/lcl/comctrls.pp"/>
-        <Caret Line="1354" Column="59" TopLine="1329"/>
-      </Position2>
-      <Position3>
-        <Filename Value="/usr/lib/codetyphon/typhon/lcl/comctrls.pp"/>
-        <Caret Line="1395" Column="69" TopLine="1371"/>
-      </Position3>
-      <Position4>
-        <Filename Value="/usr/lib/codetyphon/typhon/lcl/comctrls.pp"/>
-        <Caret Line="1415" Column="83" TopLine="1391"/>
-      </Position4>
-      <Position5>
-        <Filename Value="/usr/lib/codetyphon/typhon/lcl/comctrls.pp"/>
-        <Caret Line="1497" Column="43" TopLine="1473"/>
-      </Position5>
-      <Position6>
-        <Filename Value="/usr/lib/codetyphon/typhon/lcl/comctrls.pp"/>
-        <Caret Line="1502" Column="43" TopLine="1478"/>
-      </Position6>
-      <Position7>
-        <Filename Value="/usr/lib/codetyphon/typhon/lcl/comctrls.pp"/>
-        <Caret Line="1506" Column="43" TopLine="1482"/>
-      </Position7>
-      <Position8>
-        <Filename Value="/usr/lib/codetyphon/typhon/lcl/comctrls.pp"/>
-        <Caret Line="2036" Column="61" TopLine="2012"/>
-      </Position8>
-      <Position9>
-        <Filename Value="/usr/lib/codetyphon/typhon/lcl/comctrls.pp"/>
-        <Caret Line="2115" Column="38" TopLine="2090"/>
-      </Position9>
-      <Position10>
-        <Filename Value="/usr/lib/codetyphon/typhon/lcl/comctrls.pp"/>
-        <Caret Line="2120" Column="33" TopLine="2095"/>
-      </Position10>
-      <Position11>
-        <Filename Value="/usr/lib/codetyphon/typhon/lcl/comctrls.pp"/>
-        <Caret Line="2122" Column="30" TopLine="2097"/>
-      </Position11>
-      <Position12>
-        <Filename Value="/usr/lib/codetyphon/typhon/lcl/comctrls.pp"/>
-        <Caret Line="2141" Column="63" TopLine="2117"/>
-      </Position12>
-      <Position13>
-        <Filename Value="/usr/lib/codetyphon/typhon/lcl/comctrls.pp"/>
-        <Caret Line="2143" Column="58" TopLine="2119"/>
-      </Position13>
-      <Position14>
-        <Filename Value="/usr/lib/codetyphon/typhon/lcl/comctrls.pp"/>
-        <Caret Line="2144" Column="55" TopLine="2120"/>
-      </Position14>
-      <Position15>
-        <Filename Value="/usr/lib/codetyphon/typhon/lcl/comctrls.pp"/>
-        <Caret Line="2211" Column="46" TopLine="2187"/>
-      </Position15>
-      <Position16>
-        <Filename Value="/usr/lib/codetyphon/typhon/lcl/comctrls.pp"/>
-        <Caret Line="2223" Column="41" TopLine="2200"/>
-      </Position16>
-      <Position17>
-        <Filename Value="/usr/lib/codetyphon/typhon/lcl/comctrls.pp"/>
-        <Caret Line="2224" Column="38" TopLine="2200"/>
-      </Position17>
-      <Position18>
-        <Filename Value="/usr/lib/codetyphon/typhon/lcl/comctrls.pp"/>
-        <Caret Line="2392" Column="30" TopLine="2367"/>
-      </Position18>
-      <Position19>
-        <Filename Value="/usr/lib/codetyphon/typhon/lcl/comctrls.pp"/>
-        <Caret Line="2404" Column="49" TopLine="2379"/>
-      </Position19>
-      <Position20>
-        <Filename Value="/usr/lib/codetyphon/typhon/lcl/comctrls.pp"/>
-        <Caret Line="2466" Column="38" TopLine="2442"/>
-      </Position20>
-      <Position21>
-        <Filename Value="/usr/lib/codetyphon/typhon/lcl/comctrls.pp"/>
-        <Caret Line="3160" Column="30" TopLine="3135"/>
-      </Position21>
-      <Position22>
-        <Filename Value="/usr/lib/codetyphon/typhon/lcl/comctrls.pp"/>
-        <Caret Line="3204" Column="35" TopLine="3180"/>
-      </Position22>
-      <Position23>
-        <Filename Value="/usr/lib/codetyphon/typhon/lcl/comctrls.pp"/>
-        <Caret Line="3242" Column="48" TopLine="3218"/>
-      </Position23>
-      <Position24>
-        <Filename Value="/usr/lib/codetyphon/typhon/lcl/comctrls.pp"/>
-        <Caret Line="3262" Column="53" TopLine="3238"/>
-      </Position24>
-      <Position25>
-        <Filename Value="/usr/lib/codetyphon/typhon/lcl/comctrls.pp"/>
-        <Caret Line="3362" Column="38" TopLine="3338"/>
-      </Position25>
-      <Position26>
-        <Filename Value="/usr/lib/codetyphon/typhon/lcl/comctrls.pp"/>
-        <Caret Line="3404" Column="43" TopLine="3380"/>
-      </Position26>
-      <Position27>
         <Filename Value="filetreeviews.pas"/>
         <Caret Line="81" Column="17" TopLine="64"/>
+      </Position1>
+      <Position2>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="9" Column="10" TopLine="46"/>
+      </Position2>
+      <Position3>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="573" Column="61" TopLine="551"/>
+      </Position3>
+      <Position4>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="469" Column="45" TopLine="464"/>
+      </Position4>
+      <Position5>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="466" Column="39" TopLine="462"/>
+      </Position5>
+      <Position6>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="469" Column="28" TopLine="462"/>
+      </Position6>
+      <Position7>
+        <Filename Value="customposmemo.pas"/>
+        <Caret Line="118" Column="94" TopLine="105"/>
+      </Position7>
+      <Position8>
+        <Filename Value="customposmemo.pas"/>
+        <Caret Line="900" Column="32" TopLine="879"/>
+      </Position8>
+      <Position9>
+        <Filename Value="customposmemo.pas"/>
+        <Caret Line="903" Column="23" TopLine="879"/>
+      </Position9>
+      <Position10>
+        <Filename Value="customposmemo.pas"/>
+        <Caret Line="904" Column="22" TopLine="880"/>
+      </Position10>
+      <Position11>
+        <Filename Value="customposmemo.pas"/>
+        <Caret Line="55" Column="21" TopLine="40"/>
+      </Position11>
+      <Position12>
+        <Filename Value="customposmemo.pas"/>
+        <Caret Line="118" Column="94" TopLine="94"/>
+      </Position12>
+      <Position13>
+        <Filename Value="customposmemo.pas"/>
+        <Caret Line="898" Column="37" TopLine="879"/>
+      </Position13>
+      <Position14>
+        <Filename Value="customposmemo.pas"/>
+        <Caret Line="912" Column="20" TopLine="895"/>
+      </Position14>
+      <Position15>
+        <Filename Value="customposmemo.pas"/>
+        <Caret Line="919" Column="14" TopLine="895"/>
+      </Position15>
+      <Position16>
+        <Filename Value="customposmemo.pas"/>
+        <Caret Line="78" Column="26" TopLine="64"/>
+      </Position16>
+      <Position17>
+        <Filename Value="customposmemo.pas"/>
+        <Caret Line="765" Column="29" TopLine="741"/>
+      </Position17>
+      <Position18>
+        <Filename Value="customposmemo.pas"/>
+        <Caret Line="898" Column="37" TopLine="886"/>
+      </Position18>
+      <Position19>
+        <Filename Value="customposmemo.pas"/>
+        <Caret Line="919" Column="14" TopLine="895"/>
+      </Position19>
+      <Position20>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="468" Column="32" TopLine="464"/>
+      </Position20>
+      <Position21>
+        <Filename Value="filetreeviews.pas"/>
+        <Caret Line="44" Column="39" TopLine="24"/>
+      </Position21>
+      <Position22>
+        <Filename Value="filetreeviews.pas"/>
+        <Caret Line="39" Column="22" TopLine="24"/>
+      </Position22>
+      <Position23>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="472" Column="39" TopLine="461"/>
+      </Position23>
+      <Position24>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="16" Column="3" TopLine="34"/>
+      </Position24>
+      <Position25>
+        <Filename Value="filetreeviews.pas"/>
+        <Caret Line="78" Column="32" TopLine="55"/>
+      </Position25>
+      <Position26>
+        <Filename Value="filetreeviews.pas"/>
+        <Caret Line="76" Column="59" TopLine="64"/>
+      </Position26>
+      <Position27>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="141" Column="35" TopLine="129"/>
       </Position27>
       <Position28>
-        <Filename Value="/usr/lib/codetyphon/typhon/lcl/comctrls.pp"/>
-        <Caret Line="3572" Column="14" TopLine="3559"/>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="376" Column="6" TopLine="365"/>
       </Position28>
-      <Position29>
-        <Filename Value="/usr/lib/codetyphon/typhon/lcl/comctrls.pp"/>
-        <Caret Line="3461" Column="14" TopLine="3446"/>
-      </Position29>
-      <Position30>
-        <Filename Value="/usr/lib/codetyphon/typhon/lcl/comctrls.pp"/>
-        <Caret Line="3123" Column="3" TopLine="3107"/>
-      </Position30>
     </JumpHistory>
   </ProjectSession>
   <Debugging>
-    <Watches Count="3">
+    <Watches Count="4">
       <Item1>
         <Expression Value="Tag"/>
       </Item1>
@@ -581,6 +570,9 @@
       <Item3>
         <Expression Value="SafeHash"/>
       </Item3>
+      <Item4>
+        <Expression Value="Memo.FileName"/>
+      </Item4>
     </Watches>
   </Debugging>
 </CONFIG>
