@@ -67,7 +67,7 @@ begin
   else
     inherited;
   if ssShift in Shift then;
-    // no hint;
+  // no hint;
 end;
 
 end.

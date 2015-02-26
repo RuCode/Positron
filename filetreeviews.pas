@@ -134,7 +134,7 @@ begin
           begin
             ImageIndex := 1;
             SelectedIndex := 1;
-          //  StateIndex := 1;
+            //  StateIndex := 1;
           end;
       end;
     until FindNext(info) <> 0;

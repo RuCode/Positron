@@ -5,10 +5,10 @@ unit PositronUtils;
 interface
 
 uses
-    Classes, SysUtils, SynMemo, Dialogs, Graphics;
+  Classes, SysUtils, SynMemo, Dialogs, Graphics;
 
 function PosEx(const SubStr, S: string; Offset: cardinal = 1): integer;
-procedure FindAndSelectText(Memo: TSynMemo; Text: String);
+procedure FindAndSelectText(Memo: TSynMemo; Text: string);
 
 implementation
 
@@ -45,7 +45,7 @@ begin
   {$RangeChecks On}
 end;
 
-procedure FindAndSelectText(Memo: TSynMemo; Text: String);
+procedure FindAndSelectText(Memo: TSynMemo; Text: string);
 var
   TextPos, MaxPos: integer;
   FindFlag: boolean;
