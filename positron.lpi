@@ -91,7 +91,6 @@
       <Unit9>
         <Filename Value="configmanagers.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="ConfigManagers"/>
       </Unit9>
       <Unit10>
         <Filename Value="PosMemo/filetreeviews.pas"/>
@@ -101,7 +100,6 @@
       <Unit11>
         <Filename Value="PosMemo/minimaps.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="MiniMaps"/>
       </Unit11>
       <Unit12>
         <Filename Value="PosMemo/customposmemos.pas"/>

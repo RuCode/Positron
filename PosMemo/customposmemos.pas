@@ -805,7 +805,10 @@ end;
 function TCustomPosMemo.GetFileName: string;
   // Имя файла
 begin
-  Result := ActiveItem.FileName;
+  if AvaibleData then
+    Result := ActiveItem.FileName
+  else
+    Result := '';
 end;
 
 function TCustomPosMemo.GetActiveItem: TTabData;

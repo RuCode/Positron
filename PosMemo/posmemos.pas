@@ -1,3 +1,7 @@
+{
+  Главный компонент для редактирования текста
+}
+
 unit PosMemos;
 
 {$mode objfpc}{$H+}
@@ -14,6 +18,7 @@ type
   TPosMemo = class(TCustomPanel)
   private
     fMemo: TCustomPosMemo;
+    fOnChangeActiveTab: TNotifyEvent;
     fTree: TFileTreeView;
     fLeftSplit: TSplitter;
     fMiniMap: TMiniMap;
@@ -37,6 +42,8 @@ type
     procedure SetOnCloseAllTab(AValue: TNotifyEvent);
     procedure SetOnCloseOtherTab(AValue: TNotifyEvent);
     procedure SetOnCloseTab(AValue: TQuestionEvent);
+  protected
+    procedure ChangeTab(Sender: TObject);
   public
     constructor Create(TheOwner: TComponent); override;
     destructor Destroy; override;
@@ -69,7 +76,7 @@ type
     property OnCloseTab: TQuestionEvent read GetOnCloseTab write SetOnCloseTab;
     property OnCloseAllTab: TNotifyEvent read GetOnCloseAllTab write SetOnCloseAllTab;
     property OnCloseOtherTab: TNotifyEvent read GetOnCloseOtherTab write SetOnCloseOtherTab;
-    property OnChangeActiveTab: TNotifyEvent read GetOnChangeActiveTab write SetOnChangeActiveTab;
+    property OnChangeActiveTab: TNotifyEvent read fOnChangeActiveTab write SetOnChangeActiveTab;
   end;
 
 implementation
@@ -82,20 +89,27 @@ begin
   fTree := TFileTreeView.Create(self);
   with fTree do
   begin
+    Name := 'PosMemo_Tree';
     Parent := Self;
     Align := alLeft;
     Width := 200;
   end;
   fLeftSplit := TSplitter.Create(Self);
-  with fTree do
+  with fLeftSplit do
   begin
+    Name := 'PosMemo_LeftSplitter';
     Parent := Self;
+    Left := fTree.Width;
     Align := alLeft;
   end;
   fMemo := TCustomPosMemo.Create(Self);
   with fMemo do
   begin
+    Name := 'PosMemo_Editor';
     Parent := Self;
+    Height := 100;
+    Width := 100;
+    Left := fTree.Width + 4;
     Align := alClient;
   end;
   fMiniMap := TMiniMap.Create(self);
@@ -276,7 +290,8 @@ end;
 
 procedure TPosMemo.SetOnChangeActiveTab(AValue: TNotifyEvent);
 begin
-  fMemo.OnChangeActiveTab := AValue;
+  fOnChangeActiveTab := AValue;
+  fMemo.OnChangeActiveTab := @ChangeTab;
 end;
 
 procedure TPosMemo.SetOnCloseAllTab(AValue: TNotifyEvent);
@@ -292,6 +307,13 @@ end;
 procedure TPosMemo.SetOnCloseTab(AValue: TQuestionEvent);
 begin
   fMemo.OnCloseTab := AValue;
+end;
+
+procedure TPosMemo.ChangeTab(Sender: TObject);
+begin
+  if Assigned(fOnChangeActiveTab) then
+    fOnChangeActiveTab(Sender);
+  fTree.Update(fMemo.FileName);
 end;
 
 end.
