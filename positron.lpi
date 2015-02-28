@@ -41,7 +41,7 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="12">
+    <Units Count="14">
       <Unit0>
         <Filename Value="positron.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -55,56 +55,64 @@
         <UnitName Value="MainForm"/>
       </Unit1>
       <Unit2>
-        <Filename Value="customposmemo.pas"/>
+        <Filename Value="LazRes/TemplateUnit.txt"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="CustomPosMemo"/>
       </Unit2>
       <Unit3>
-        <Filename Value="LazRes/TemplateUnit.txt"/>
+        <Filename Value="LazRes/TemplateLib.txt"/>
         <IsPartOfProject Value="True"/>
       </Unit3>
       <Unit4>
-        <Filename Value="LazRes/TemplateLib.txt"/>
+        <Filename Value="LazRes/DefaultExt.txt"/>
         <IsPartOfProject Value="True"/>
       </Unit4>
       <Unit5>
-        <Filename Value="LazRes/DefaultExt.txt"/>
-        <IsPartOfProject Value="True"/>
-      </Unit5>
-      <Unit6>
         <Filename Value="findtext.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FrameFindText"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Frame"/>
-        <UnitName Value="FindText"/>
-      </Unit6>
-      <Unit7>
+      </Unit5>
+      <Unit6>
         <Filename Value="replacetext.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FrameReplaceText"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Frame"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="positronutils.pas"/>
+        <IsPartOfProject Value="True"/>
       </Unit7>
       <Unit8>
-        <Filename Value="positronutils.pas"/>
+        <Filename Value="thememanagers.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit8>
       <Unit9>
-        <Filename Value="thememanagers.pas"/>
+        <Filename Value="configmanagers.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="ThemeManagers"/>
+        <UnitName Value="ConfigManagers"/>
       </Unit9>
       <Unit10>
-        <Filename Value="filetreeviews.pas"/>
+        <Filename Value="PosMemo/filetreeviews.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="FileTreeViews"/>
       </Unit10>
       <Unit11>
-        <Filename Value="configmanagers.pas"/>
+        <Filename Value="PosMemo/minimaps.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="ConfigManagers"/>
+        <UnitName Value="MiniMaps"/>
       </Unit11>
+      <Unit12>
+        <Filename Value="PosMemo/customposmemos.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="CustomPosMemos"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="PosMemo/posmemos.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="PosMemos"/>
+      </Unit13>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -114,6 +122,7 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
+      <OtherUnitFiles Value="PosMemo"/>
       <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Parsing>

@@ -8,14 +8,12 @@ uses {$IFDEF UNIX} {$IFDEF UseCThreads}
   Forms,
   synuni,
   MainForm,
-  CustomPosMemo,
   FindText,
   ReplaceText,
   PositronUtils,
   ThemeManagers,
-  FileTreeViews,
-  ConfigManagers,
-  pl_virtualtrees;
+  ConfigManagers, filetreeviews,
+  pl_virtualtrees, MiniMaps, CustomPosMemos, posmemos;
 
 {$R *.res}
 

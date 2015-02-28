@@ -6,8 +6,8 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs,
-  ExtCtrls, Menus, StdCtrls, ActnList, StdActns, CustomPosMemo, LResources,
-  FindText, ReplaceText, ConfigManagers, FileTreeViews;
+  ExtCtrls, Menus, StdCtrls, ActnList, StdActns, LResources,
+  FindText, ReplaceText, ConfigManagers, FileTreeViews, PosMemos;
 
 type
 
@@ -109,7 +109,8 @@ type
   public
     { public declarations }
     Config: TConfigManager;
-    Memo: TCustomPosMemo;
+    //Memo: TCustomPosMemo;
+    Memo: TPosMemo;
     FileTreeView: TFileTreeView;
     function LoadTextFromLazarusResource(AName: string): string;
     function OnCloseTab(Sender: TObject): integer;
@@ -132,7 +133,19 @@ procedure TFormMain.FormShow(Sender: TObject);
 var
   i: integer;
 begin
-  // Дерево
+  Memo := TPosMemo.Create(nil);
+  with Memo do
+  begin
+    Parent := FormMain;
+    Align := alClient;
+  end;
+  Memo.OnCloseTab := @OnCloseTab;
+  Memo.OnCloseAllTab := @OnCloseAllTab;
+  Memo.OnCloseOtherTab := @OnCloseOtherTab;
+  Memo.OnChangeActiveTab := @OnChangeActiveTab;
+
+
+ { // Дерево
   FileTreeView := TFileTreeView.Create(nil);
   with FileTreeView do
   begin
@@ -151,7 +164,7 @@ begin
   Memo.OnCloseTab := @OnCloseTab;
   Memo.OnCloseAllTab := @OnCloseAllTab;
   Memo.OnCloseOtherTab := @OnCloseOtherTab;
-  Memo.OnChangeActiveTab := @OnChangeActiveTab;
+  Memo.OnChangeActiveTab := @OnChangeActiveTab;}
   Caption := 'Positron';
   for i := 1 to Paramcount do
     Memo.Open(ParamStrUTF8(i));
@@ -306,7 +319,7 @@ end;
 procedure TFormMain.StoreHistory;
 // Сохраняем открытые файлы
 
-  function IsNewFile(Memo: TCustomPosMemo; Index: integer): boolean;
+  function IsNewFile(Memo: TPosMemo; Index: integer): boolean;
   begin
     Result := (Memo.Items[Index].FileName = '');
     Result := Result and (Memo.Items[Index].TabSheet.Caption <> '');
@@ -445,6 +458,8 @@ begin
   for i := 0 to Memo.Count - 1 do
     Modified := Modified or Memo.Items[i].Memo.Modified;
   // Вопрос и сохранение
+  if not Modified then
+    Exit;
   res := MessageDlg('Вопрос', 'Есть изменённые файлы, желаете сохранить?', mtConfirmation, mbYesNo, '');
   if res = mrYes then
     for i := 0 to Memo.Count - 1 do
@@ -466,13 +481,6 @@ procedure TFormMain.OnChangeActiveTab(Sender: TObject);
 // Действия при смене активной вкладки
 begin
   UpdateMainFormCaption;
-  if FileExistsUTF8(Memo.FileName) then
-  begin
-    FileTreeView.OpenFolder(ExtractFilePath(Memo.FileName));
-    FileTreeView.Items[0].Expand(False);
-  end
-  else
-    FileTreeView.Items.Clear;
 end;
 
 procedure TFormMain.FileNewBlankExecute(Sender: TObject);

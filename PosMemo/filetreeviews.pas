@@ -1,4 +1,9 @@
 {
+  Компонент предок PosMemo - осуществляет навигацию по файлам\коду
+  Автор: RuCode
+
+  TODO:
+
     Данный компонент должен предоставлять возможность отображения в виде дереве
   следующего набора данных:
   - Дерево файлов текущей директории (F1)
@@ -40,6 +45,7 @@ type
   public
     constructor Create(AnOwner: TComponent); override;
     destructor Destroy; override;
+    procedure Update(APath: String);
     procedure OpenFolder(APath: string; ParentNode: TTreeNode = nil);
     procedure OpenProject(APath: string);
     procedure OpenForms(APath: string);
@@ -97,6 +103,18 @@ destructor TFileTreeView.Destroy;
 begin
   fImages.Free;
   inherited Destroy;
+end;
+
+procedure TFileTreeView.Update(APath: String);
+begin
+  if APath = '' then
+    Exit;
+  case fstate of
+    tvsFolder: OpenFolder(APath);
+  else
+    ShowMessage('Остальные варианты пока не реализованы');
+  end;
+  Items[0].Expand(False);
 end;
 
 procedure TFileTreeView.OpenFolder(APath: string; ParentNode: TTreeNode = nil);

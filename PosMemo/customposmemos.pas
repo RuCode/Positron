@@ -1,4 +1,9 @@
-unit CustomPosMemo;
+{
+  Компонент предок PosMemo осуществляет функции редактирования текста
+  Автор: RuCode
+}
+
+unit CustomPosMemos;
 
 {$mode objfpc}{$H+}
 {$MODESWITCH advancedrecords}
