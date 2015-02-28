@@ -9,7 +9,7 @@ unit PosMemos;
 interface
 
 uses
-  Classes, SysUtils, Controls, Graphics, ExtCtrls, CustomPosMemos, FileTreeViews, MiniMaps;
+  Classes, SysUtils, Controls, Graphics, ExtCtrls, Dialogs, CustomPosMemos, FileTreeViews, MiniMaps;
 
 type
 
@@ -44,6 +44,7 @@ type
     procedure SetOnCloseTab(AValue: TQuestionEvent);
   protected
     procedure ChangeTab(Sender: TObject);
+    procedure OpenFileFromTree(FileName: String);
   public
     constructor Create(TheOwner: TComponent); override;
     destructor Destroy; override;
@@ -93,6 +94,7 @@ begin
     Parent := Self;
     Align := alLeft;
     Width := 200;
+    OnOpenFile := @OpenFileFromTree;
   end;
   fLeftSplit := TSplitter.Create(Self);
   with fLeftSplit do
@@ -314,6 +316,15 @@ begin
   if Assigned(fOnChangeActiveTab) then
     fOnChangeActiveTab(Sender);
   fTree.Update(fMemo.FileName);
+end;
+
+procedure TPosMemo.OpenFileFromTree(FileName: String);
+begin
+  if ExtractLastDir(ExtractFilePath(fMemo.FileName)) = FileName then
+    Exit;
+  if DirectoryExists(FileName) then
+    Exit;
+  Open(ExtractFilePath(fMemo.FileName) + FileName);
 end;
 
 end.

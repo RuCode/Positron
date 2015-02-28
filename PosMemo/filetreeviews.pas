@@ -33,11 +33,13 @@ const
 
 type
   TTreeViewState = (tvsFolder, tvsProject, tvsForms, tvsUnit);
+  TNotifyOpenFileEvent = procedure(FileName: string) of object;
 
   { TFileTreeView }
 
   TFileTreeView = class(TTreeView)
   private
+    fNotifyOpenEvent: TNotifyOpenFileEvent;
     fState: TTreeViewState;
     fImages: TImageList;
   protected
@@ -45,11 +47,12 @@ type
   public
     constructor Create(AnOwner: TComponent); override;
     destructor Destroy; override;
-    procedure Update(APath: String);
+    procedure Update(APath: string);
     procedure OpenFolder(APath: string; ParentNode: TTreeNode = nil);
     procedure OpenProject(APath: string);
     procedure OpenForms(APath: string);
     procedure OpenUnit(APath: string);
+    property OnOpenFile: TNotifyOpenFileEvent read fNotifyOpenEvent write fNotifyOpenEvent;
   end;
 
 function ExtractLastDir(DirPath: string): string;
@@ -77,16 +80,45 @@ end;
 { TFileTreeView }
 
 procedure TFileTreeView.DblClick;
+
+  function ExtractPathFromItem(Node: TTreeNode): string;
+  var
+    List: TStringList;
+    CurrNode: TTreeNode;
+    i: Integer;
+  begin
+    List := TStringList.Create;
+    CurrNode := Node;
+    while Assigned(CurrNode) do
+    begin
+      List.Add(CurrNode.Text);
+      if Assigned(CurrNode.Parent) then
+        CurrNode := CurrNode.Parent
+      else
+        CurrNode := nil;
+    end;
+    Result := '';
+    for i:= List.Count - 2 downto 1 do
+      Result := List[i];
+    if Result <> '' then
+      if Result[Length(Result)] <> DirectorySeparator then
+        Result += DirectorySeparator;
+    Result += List[0];
+    List.Free;
+  end;
+
 begin
   inherited DblClick;
   if (tvsFolder = fState) and Assigned(Selected) then
   begin
-    ShowMessage(Selected.Text);
-    {$Message 'Тут следует вызвать событие для открытия файла по двойному клику'}
+    if Assigned(fNotifyOpenEvent) then
+      fNotifyOpenEvent(ExtractPathFromItem(Selected));
   end;
 end;
 
 constructor TFileTreeView.Create(AnOwner: TComponent);
+var
+  Opt: TTreeViewOptions;
 begin
   inherited Create(AnOwner);
   fImages := TImageList.Create(self);
@@ -97,6 +129,9 @@ begin
   self.Images := fImages;
   self.StateImages := fImages;
   fState := tvsFolder;
+  Opt := self.Options;
+  Opt += [tvoReadOnly];
+  self.Options:= Opt;
 end;
 
 destructor TFileTreeView.Destroy;
@@ -105,14 +140,14 @@ begin
   inherited Destroy;
 end;
 
-procedure TFileTreeView.Update(APath: String);
+procedure TFileTreeView.Update(APath: string);
 begin
   if APath = '' then
     Exit;
   case fstate of
-    tvsFolder: OpenFolder(APath);
-  else
-    ShowMessage('Остальные варианты пока не реализованы');
+    tvsFolder: OpenFolder(ExtractFilePath(APath));
+    else
+      ShowMessage('Остальные варианты пока не реализованы');
   end;
   Items[0].Expand(False);
 end;
@@ -152,7 +187,6 @@ begin
           begin
             ImageIndex := 1;
             SelectedIndex := 1;
-            //  StateIndex := 1;
           end;
       end;
     until FindNext(info) <> 0;
