@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs,
   ExtCtrls, Menus, StdCtrls, ActnList, StdActns, LResources,
-  FindText, ReplaceText, ConfigManagers, FileTreeViews, PosMemos;
+  FindText, ReplaceText, ConfigManagers, PosMemos;
 
 type
 
@@ -74,8 +74,14 @@ type
     MenuSep1: TMenuItem;
     MenuSep2: TMenuItem;
     MenuSaveAs: TMenuItem;
+    procedure EditCopyUpdate(Sender: TObject);
+    procedure EditCutUpdate(Sender: TObject);
+    procedure EditDeleteUpdate(Sender: TObject);
+    procedure EditPasteUpdate(Sender: TObject);
     procedure EditRedoExecute(Sender: TObject);
     procedure EditRedoUpdate(Sender: TObject);
+    procedure EditSelectAllUpdate(Sender: TObject);
+    procedure EditUndoUpdate(Sender: TObject);
     procedure FileNewDynLibraryExecute(Sender: TObject);
     procedure FileNewUnitExecute(Sender: TObject);
     procedure FileSaveAsBeforeExecute(Sender: TObject);
@@ -92,7 +98,6 @@ type
     procedure FormShow(Sender: TObject);
     procedure MenuItem2Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
-    procedure MenuItem4Click(Sender: TObject);
     procedure MenuSelectClick(Sender: TObject);
     procedure SearchAndReplaceExecute(Sender: TObject);
     procedure SearchTextExecute(Sender: TObject);
@@ -108,10 +113,8 @@ type
     procedure LoadHistory;
   public
     { public declarations }
-    Config: TConfigManager;
-    //Memo: TCustomPosMemo;
     Memo: TPosMemo;
-    FileTreeView: TFileTreeView;
+    Config: TConfigManager;
     function LoadTextFromLazarusResource(AName: string): string;
     function OnCloseTab(Sender: TObject): integer;
     procedure OnCloseAllTab(Sender: TObject);
@@ -143,28 +146,6 @@ begin
   Memo.OnCloseAllTab := @OnCloseAllTab;
   Memo.OnCloseOtherTab := @OnCloseOtherTab;
   Memo.OnChangeActiveTab := @OnChangeActiveTab;
-
-
- { // Дерево
-  FileTreeView := TFileTreeView.Create(nil);
-  with FileTreeView do
-  begin
-    Parent := FormMain;
-    Width := 200;
-    Align := alLeft;
-  end;
-  FileTreeView.Items.Add(nil, 'Root');
-  // Редактор
-  Memo := TCustomPosMemo.Create(nil);
-  with Memo do
-  begin
-    Parent := FormMain;
-    Align := alClient;
-  end;
-  Memo.OnCloseTab := @OnCloseTab;
-  Memo.OnCloseAllTab := @OnCloseAllTab;
-  Memo.OnCloseOtherTab := @OnCloseOtherTab;
-  Memo.OnChangeActiveTab := @OnChangeActiveTab;}
   Caption := 'Positron';
   for i := 1 to Paramcount do
     Memo.Open(ParamStrUTF8(i));
@@ -176,6 +157,7 @@ begin
 end;
 
 procedure TFormMain.MenuItem2Click(Sender: TObject);
+// Отладка - перемещение по тексту
 begin
   with Memo.ActiveItem do
   begin
@@ -185,16 +167,13 @@ begin
 end;
 
 procedure TFormMain.MenuItem3Click(Sender: TObject);
+// Отладка - перемещение по тексту
 begin
   Memo.ActiveItem.Memo.TopLine := 10;
 end;
 
-procedure TFormMain.MenuItem4Click(Sender: TObject);
-begin
-  FileTreeView.OpenFolder('/home/anton/documents/Positron/');
-end;
-
 procedure TFormMain.MenuSelectClick(Sender: TObject);
+// Отладка - выделение строк разным цветом
 begin
   Memo.MarkLine(1, clBlack);
   Memo.MarkLine(2, clMaroon);
@@ -574,6 +553,58 @@ begin
   Memo.ActiveItem.Memo.Redo;
 end;
 
+procedure TFormMain.EditCutUpdate(Sender: TObject);
+// Обновление экшена для меню Правка->Вырезать
+begin
+  inherited;
+  if Memo.IsEmpty then
+  begin
+    TAction(Sender).Enabled := False;
+    exit;
+  end
+  else
+    TAction(Sender).Enabled := Memo.ActiveItem.Memo.SelAvail;
+end;
+
+procedure TFormMain.EditDeleteUpdate(Sender: TObject);
+// Обновление экшена для меню Правка->Удалить
+begin
+  inherited;
+  if Memo.IsEmpty then
+  begin
+    TAction(Sender).Enabled := False;
+    exit;
+  end
+  else
+    TAction(Sender).Enabled := Memo.ActiveItem.Memo.SelAvail;
+end;
+
+procedure TFormMain.EditPasteUpdate(Sender: TObject);
+// Обновление экшена для меню Правка->Вставить
+begin
+  inherited;
+  if Memo.IsEmpty then
+  begin
+    TAction(Sender).Enabled := False;
+    exit;
+  end
+  else
+    TAction(Sender).Enabled := Memo.ActiveItem.Memo.CanPaste;
+end;
+
+procedure TFormMain.EditCopyUpdate(Sender: TObject);
+// Обновление экшена для меню Правка->Копировать
+begin
+  inherited;
+  if Memo.IsEmpty then
+  begin
+    TAction(Sender).Enabled := False;
+    exit;
+  end
+  else
+    TAction(Sender).Enabled := Memo.ActiveItem.Memo.SelAvail;
+end;
+
 procedure TFormMain.EditRedoUpdate(Sender: TObject);
 // Обновление экшена для редо
 begin
@@ -585,6 +616,32 @@ begin
   end
   else
     TAction(Sender).Enabled := Memo.ActiveItem.Memo.CanRedo;
+end;
+
+procedure TFormMain.EditSelectAllUpdate(Sender: TObject);
+// Обновление экшена для меню Правка->Выделить всё
+begin
+  inherited;
+  if Memo.IsEmpty then
+  begin
+    TAction(Sender).Enabled := False;
+    exit;
+  end
+  else
+    TAction(Sender).Enabled := Memo.ActiveItem.Memo.Text <> '';
+end;
+
+procedure TFormMain.EditUndoUpdate(Sender: TObject);
+// Обновление экшена для отмены действий
+begin
+  inherited;
+  if Memo.IsEmpty then
+  begin
+    TAction(Sender).Enabled := False;
+    exit;
+  end
+  else
+    TAction(Sender).Enabled := Memo.ActiveItem.Memo.CanUndo;
 end;
 
 procedure TFormMain.FileCloseOtherFilesExecute(Sender: TObject);
