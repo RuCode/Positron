@@ -25,7 +25,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics,
-  Dialogs, ComCtrls, ExtCtrls, LResources;
+  Dialogs, ComCtrls, ExtCtrls, LResources, LCLProc;
 
 const
   IMAGES_FOLDER = 'folder';
@@ -85,7 +85,7 @@ procedure TFileTreeView.DblClick;
   var
     List: TStringList;
     CurrNode: TTreeNode;
-    i: Integer;
+    i: integer;
   begin
     List := TStringList.Create;
     CurrNode := Node;
@@ -98,7 +98,7 @@ procedure TFileTreeView.DblClick;
         CurrNode := nil;
     end;
     Result := '';
-    for i:= List.Count - 2 downto 1 do
+    for i := List.Count - 2 downto 1 do
       Result := List[i];
     if Result <> '' then
       if Result[Length(Result)] <> DirectorySeparator then
@@ -131,7 +131,7 @@ begin
   fState := tvsFolder;
   Opt := self.Options;
   Opt += [tvoReadOnly];
-  self.Options:= Opt;
+  self.Options := Opt;
 end;
 
 destructor TFileTreeView.Destroy;
@@ -141,15 +141,73 @@ begin
 end;
 
 procedure TFileTreeView.Update(APath: string);
+
+  procedure ExpandTree(ARoot: TTreeNode; AList: TStringList);
+  // Рукурсивный обход
+  var
+    i: integer;
+    j: integer;
+    Buf: String;
+  begin
+    for i := 0 to ARoot.Count - 1 do
+    begin
+      for j := 0 to AList.Count - 1 do
+      begin
+        Buf := AList[j];
+        //ShowMessage(Buf + ' - ' + ARoot[i].Text);
+        if UTF8Pos(Buf, String(ARoot[i].Text)) <> 0 then
+        begin
+          ARoot.Expanded := True;
+          ARoot.Expand(False);
+        end;
+      end;
+      if ARoot.Items[i].Count <> -1 then
+        ExpandTree(ARoot.Items[i], AList);
+    end;
+  end;
+
+  procedure ExpandToFile(APath: string);
+  // Линейная процедура
+  var
+    list: TStringList;
+    Buf: string;
+    i: integer;
+  begin
+    // Разбиваем путь на составляющие
+    list := TStringList.Create;
+    i := 1;
+    Buf := '';
+    repeat
+      if APath[i] <> DirectorySeparator then
+        Buf += APath[i]
+      else
+      begin
+        list.Add(Buf);
+        Buf := '';
+      end;
+      Inc(i);
+    until i = Length(APath);
+    list.Add(Buf);
+    // Открываем
+    ExpandTree(Items[0], list);
+    Expand(Items[0]);
+    list.Free;
+  end;
+
 begin
   if APath = '' then
     Exit;
   case fstate of
-    tvsFolder: OpenFolder(ExtractFilePath(APath));
-    else
+    tvsFolder:
+    begin
+      OpenFolder(ExtractFilePath(APath));
+      ExpandToFile(APath);
+    end;
+
+  else
       ShowMessage('Остальные варианты пока не реализованы');
   end;
-  Items[0].Expand(False);
+  //  Items[0].Expand(False);
 end;
 
 procedure TFileTreeView.OpenFolder(APath: string; ParentNode: TTreeNode = nil);
