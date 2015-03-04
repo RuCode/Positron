@@ -196,6 +196,7 @@ object FormMain: TFormMain
       Dialog.Filter = 'Pascal|*.lpr *.lpi *.pas *.pps *.ppu *.inc|Asm|*.asm *.inc *.moc|Все файлы|*.*'
       Hint = 'Открыть'
       ShortCut = 16463
+      BeforeExecute = FileOpenBeforeExecute
       OnAccept = FileOpenAccept
     end
     object FileSaveAs: TFileSaveAs
@@ -243,6 +244,7 @@ object FormMain: TFormMain
     object FileSave: TAction
       Category = 'File'
       Caption = 'Сохранить'
+      Enabled = False
       OnExecute = FileSaveExecute
       OnUpdate = IsFileUpdate
       ShortCut = 16467
@@ -250,11 +252,13 @@ object FormMain: TFormMain
     object FileSaveAll: TAction
       Category = 'File'
       Caption = 'Сохранить все...'
+      Enabled = False
       OnUpdate = IsFileUpdate
     end
     object FileCloseFile: TAction
       Category = 'File'
       Caption = 'Закрыть'
+      Enabled = False
       OnExecute = FileCloseFileExecute
       OnUpdate = IsFileUpdate
       ShortCut = 16471
@@ -262,12 +266,14 @@ object FormMain: TFormMain
     object FileCloseOtherFiles: TAction
       Category = 'File'
       Caption = 'Закрыть все, кроме текущей'
+      Enabled = False
       OnExecute = FileCloseOtherFilesExecute
       OnUpdate = FileCloseOtherFilesUpdate
     end
     object FileCloseAllFiles: TAction
       Category = 'File'
       Caption = 'Закрыть все...'
+      Enabled = False
       OnExecute = FileCloseAllFilesExecute
       OnUpdate = IsFileUpdate
     end

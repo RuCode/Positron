@@ -84,6 +84,7 @@ type
     procedure EditUndoUpdate(Sender: TObject);
     procedure FileNewDynLibraryExecute(Sender: TObject);
     procedure FileNewUnitExecute(Sender: TObject);
+    procedure FileOpenBeforeExecute(Sender: TObject);
     procedure FileSaveAsBeforeExecute(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure IsFileUpdate(Sender: TObject);
@@ -518,6 +519,11 @@ procedure TFormMain.FileNewUnitExecute(Sender: TObject);
 begin
   FileNewBlank.Execute;
   Memo.Lines.Text := LoadTextFromLazarusResource('TemplateUnit');
+end;
+
+procedure TFormMain.FileOpenBeforeExecute(Sender: TObject);
+begin
+
 end;
 
 procedure TFormMain.FileSaveAsBeforeExecute(Sender: TObject);

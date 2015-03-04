@@ -60,6 +60,7 @@ function ExtractLastDir(DirPath: string): string;
 implementation
 
 function ExtractLastDir(DirPath: string): string;
+// Получение имени последней директории
 var
   i, fromDel: integer;
 begin
@@ -77,36 +78,29 @@ begin
     Result[i - fromDel + 1] := DirPath[i + 1];
 end;
 
+function ExtractPathFromItem(Node: TTreeNode): string;
+// Возвращает путь от Root-директории до выбранного файла
+var
+  List: TStringList;
+  CurrNode: TTreeNode;
+  i: integer;
+begin
+  List := TStringList.Create;
+  CurrNode := Node;
+  while Assigned(CurrNode) do
+  begin
+    List.Add(CurrNode.Text);
+    CurrNode := CurrNode.Parent;
+  end;
+  Result := '';
+  for i := List.Count - 2 downto 0 do
+    Result += List[i];
+  List.Free;
+end;
+
 { TFileTreeView }
 
 procedure TFileTreeView.DblClick;
-
-  function ExtractPathFromItem(Node: TTreeNode): string;
-  var
-    List: TStringList;
-    CurrNode: TTreeNode;
-    i: integer;
-  begin
-    List := TStringList.Create;
-    CurrNode := Node;
-    while Assigned(CurrNode) do
-    begin
-      List.Add(CurrNode.Text);
-      if Assigned(CurrNode.Parent) then
-        CurrNode := CurrNode.Parent
-      else
-        CurrNode := nil;
-    end;
-    Result := '';
-    for i := List.Count - 2 downto 1 do
-      Result := List[i];
-    if Result <> '' then
-      if Result[Length(Result)] <> DirectorySeparator then
-        Result += DirectorySeparator;
-    Result += List[0];
-    List.Free;
-  end;
-
 begin
   inherited DblClick;
   if (tvsFolder = fState) and Assigned(Selected) then

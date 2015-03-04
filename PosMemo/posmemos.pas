@@ -135,6 +135,7 @@ end;
 function TPosMemo.Open(FileName: string): integer;
 begin
   Result := fMemo.Open(FileName);
+  fTree.Update(ExtractFilePath(fMemo.FileName));
 end;
 
 procedure TPosMemo.Save(FileName: string);
@@ -319,6 +320,8 @@ end;
 
 procedure TPosMemo.OpenFileFromTree(FileName: String);
 // Открытие файла при двойном клике по директории в fTree
+var
+  RootPath: String;
 begin
   if ExtractLastDir(ExtractFilePath(fMemo.FileName)) = FileName then
     Exit;
@@ -328,7 +331,8 @@ begin
   {$MESSAGE 'Не работает открытие директории в процедуре Update'}
   { TODO : 1. Следует открыть директории до текущего файла
            2. Следует проверить FileName, что бы открытие было на 3-х и более уровнях }
-  Open(ExtractFilePath(fMemo.FileName) + FileName);
+  RootPath := ExtractFilePath(fMemo.FileName);
+  Open(RootPath + FileName);
 end;
 
 end.
