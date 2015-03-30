@@ -65,6 +65,9 @@ type
   public
     constructor Create;
     destructor Destroy; override;
+    procedure Open(FileName: TFileName);
+    procedure Save;
+    procedure Close;
   public
     property AvaibleProject: Boolean read fAvaibleProject;
     property ProjectDir: string read fProjectDir;
@@ -128,6 +131,21 @@ begin
   FreeAndNil(fOtherUnitFiles);
   FreeAndNil(fExceptionList);
   inherited Destroy;
+end;
+
+procedure TProjectManager.Open(FileName: TFileName);
+begin
+
+end;
+
+procedure TProjectManager.Save;
+begin
+
+end;
+
+procedure TProjectManager.Close;
+begin
+
 end;
 
 // Менеджер проекта будем использовать глобально т.к. у нас один проект

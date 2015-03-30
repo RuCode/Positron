@@ -35,6 +35,8 @@ type
 
   { TTabData - Каждая вкладка несёт данную в этом обьекте информацию }
 
+  { TODO 10 : Однако, что бы не плодить миллион окон, следует добавить возможность открывать фрэймы во вкладках, типа всяких манагеров }
+
   TTabData = class(TObject)
     XHash: longword;
     FileName: string;
@@ -963,7 +965,7 @@ begin
   end;
 end;
 
-procedure TCustomPosMemo.Close;
+procedure TCustomPosMemo.Close; { TODO : Ошибка при рандомном закрытие вкладок }
 // Закрыть активную вкладку
 begin
   try
