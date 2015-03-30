@@ -9,7 +9,8 @@ unit PosMemos;
 interface
 
 uses
-  Classes, SysUtils, Controls, Graphics, ExtCtrls, Dialogs, CustomPosMemos, FileTreeViews, MiniMaps;
+  Classes, SysUtils, Controls, Graphics, ExtCtrls, Dialogs, CustomPosMemos,
+  FileTreeViews, MiniMaps, ProjectManagers;
 
 type
 
@@ -129,13 +130,13 @@ end;
 function TPosMemo.New: integer;
 begin
   Result := fMemo.New;
-  fTree.Update(fMemo.FileName);
+  fTree.UpdateViewPort(fMemo.FileName);
 end;
 
 function TPosMemo.Open(FileName: string): integer;
 begin
   Result := fMemo.Open(FileName);
-  fTree.Update(ExtractFilePath(fMemo.FileName));
+  fTree.UpdateViewPort(ExtractFilePath(fMemo.FileName));
 end;
 
 procedure TPosMemo.Save(FileName: string);
@@ -166,19 +167,19 @@ end;
 procedure TPosMemo.Undo;
 begin
   fMemo.Undo;
-  fTree.Update(FileName);
+  fTree.UpdateViewPort(FileName);
 end;
 
 procedure TPosMemo.Redo;
 begin
   fMemo.Redo;
-  fTree.Update(FileName);
+  fTree.UpdateViewPort(FileName);
 end;
 
 procedure TPosMemo.Cut;
 begin
   fMemo.Cut;
-  fTree.Update(FileName);
+  fTree.UpdateViewPort(FileName);
 end;
 
 procedure TPosMemo.Copy;
@@ -189,13 +190,13 @@ end;
 procedure TPosMemo.Paste;
 begin
   fMemo.Paste;
-  fTree.Update(FileName);
+  fTree.UpdateViewPort(FileName);
 end;
 
 procedure TPosMemo.Delete;
 begin
   fMemo.Delete;
-  fTree.Update(FileName);
+  fTree.UpdateViewPort(FileName);
 end;
 
 procedure TPosMemo.SelectAll;
@@ -276,13 +277,13 @@ end;
 procedure TPosMemo.SetItemIndex(AValue: integer);
 begin
   fMemo.ItemIndex := AValue;
-  fTree.Update(fMemo.FileName);
+  fTree.UpdateViewPort(fMemo.FileName);
 end;
 
 procedure TPosMemo.SetLines(AValue: TStrings);
 begin
   fMemo.Lines := AValue;
-  fTree.Update(fMemo.FileName);
+  fTree.UpdateViewPort(fMemo.FileName);
 end;
 
 procedure TPosMemo.SetModified(AValue: boolean);
@@ -315,7 +316,7 @@ procedure TPosMemo.ChangeTab(Sender: TObject);
 begin
   if Assigned(fOnChangeActiveTab) then
     fOnChangeActiveTab(Sender);
-  fTree.Update(fMemo.FileName);
+  fTree.UpdateViewPort(fMemo.FileName);
 end;
 
 procedure TPosMemo.OpenFileFromTree(FileName: String);
@@ -327,12 +328,10 @@ begin
     Exit;
   if DirectoryExists(FileName) then
     Exit;
-  fTree.Update(ExtractFilePath(fMemo.FileName));
-  {$MESSAGE 'Не работает открытие директории в процедуре Update'}
-  { TODO : 1. Следует открыть директории до текущего файла
-           2. Следует проверить FileName, что бы открытие было на 3-х и более уровнях }
+  { TODO : 1. Следует открыть директории до текущего файла }
   RootPath := ExtractFilePath(fMemo.FileName);
   Open(RootPath + FileName);
+  fTree.UpdateViewPort(RootPath);
 end;
 
 end.

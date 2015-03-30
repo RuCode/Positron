@@ -3,13 +3,13 @@
   <ProjectSession>
     <Version Value="9"/>
     <BuildModes Active="Default"/>
-    <Units Count="69">
+    <Units Count="70">
       <Unit0>
         <Filename Value="positron.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="19" Y="18"/>
-        <UsageCount Value="121"/>
+        <UsageCount Value="124"/>
       </Unit0>
       <Unit1>
         <Filename Value="mainform.pas"/>
@@ -18,10 +18,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="MainForm"/>
-        <TopLine Value="472"/>
-        <CursorPos X="12" Y="475"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="377"/>
+        <CursorPos X="41" Y="392"/>
         <ComponentState Value="1"/>
-        <UsageCount Value="121"/>
+        <UsageCount Value="124"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -30,7 +31,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="25" Y="10"/>
-        <UsageCount Value="90"/>
+        <UsageCount Value="93"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit2>
       <Unit3>
@@ -38,7 +39,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="7" Y="22"/>
-        <UsageCount Value="89"/>
+        <UsageCount Value="92"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit3>
       <Unit4>
@@ -46,7 +47,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="157"/>
-        <UsageCount Value="88"/>
+        <UsageCount Value="91"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit4>
       <Unit5>
@@ -57,7 +58,7 @@
         <ResourceBaseClass Value="Frame"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="28" Y="44"/>
-        <UsageCount Value="71"/>
+        <UsageCount Value="74"/>
       </Unit5>
       <Unit6>
         <Filename Value="replacetext.pas"/>
@@ -68,39 +69,42 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="42"/>
         <CursorPos X="14" Y="70"/>
-        <UsageCount Value="66"/>
+        <UsageCount Value="69"/>
       </Unit6>
       <Unit7>
         <Filename Value="positronutils.pas"/>
         <IsPartOfProject Value="True"/>
+        <UnitName Value="PositronUtils"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="52"/>
-        <CursorPos X="59" Y="48"/>
-        <UsageCount Value="64"/>
+        <TopLine Value="32"/>
+        <CursorPos X="5" Y="7"/>
+        <UsageCount Value="67"/>
       </Unit7>
       <Unit8>
         <Filename Value="thememanagers.pas"/>
         <IsPartOfProject Value="True"/>
+        <UnitName Value="ThemeManagers"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="21" Y="8"/>
-        <UsageCount Value="52"/>
+        <UsageCount Value="55"/>
       </Unit8>
       <Unit9>
         <Filename Value="configmanagers.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos Y="278"/>
-        <UsageCount Value="52"/>
+        <UnitName Value="ConfigManagers"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="67"/>
+        <CursorPos X="9" Y="233"/>
+        <UsageCount Value="55"/>
+        <Loaded Value="True"/>
       </Unit9>
       <Unit10>
         <Filename Value="PosMemo/filetreeviews.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="FileTreeViews"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="83"/>
-        <CursorPos X="26" Y="96"/>
-        <UsageCount Value="28"/>
+        <EditorIndex Value="3"/>
+        <CursorPos X="66" Y="48"/>
+        <UsageCount Value="31"/>
         <Loaded Value="True"/>
       </Unit10>
       <Unit11>
@@ -108,25 +112,24 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="81" Y="2"/>
-        <UsageCount Value="28"/>
+        <UsageCount Value="31"/>
       </Unit11>
       <Unit12>
         <Filename Value="PosMemo/customposmemos.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="CustomPosMemos"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="794"/>
-        <CursorPos Y="812"/>
-        <UsageCount Value="28"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="34"/>
+        <UsageCount Value="31"/>
+        <Loaded Value="True"/>
       </Unit12>
       <Unit13>
         <Filename Value="PosMemo/posmemos.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="PosMemos"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="316"/>
-        <CursorPos Y="330"/>
-        <UsageCount Value="28"/>
+        <CursorPos X="56" Y="14"/>
+        <UsageCount Value="31"/>
         <Loaded Value="True"/>
       </Unit13>
       <Unit14>
@@ -173,8 +176,8 @@
       <Unit20>
         <Filename Value="/usr/lib/codetyphon/typhon/lcl/comctrls.pp"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="2904"/>
-        <CursorPos X="16" Y="2916"/>
+        <TopLine Value="3307"/>
+        <CursorPos X="15" Y="3322"/>
         <UsageCount Value="11"/>
       </Unit20>
       <Unit21>
@@ -184,10 +187,12 @@
       </Unit21>
       <Unit22>
         <Filename Value="/usr/lib/codetyphon/fpcsrc/rtl/objpas/fgl.pp"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="988"/>
-        <CursorPos X="3" Y="991"/>
-        <UsageCount Value="9"/>
+        <UnitName Value="fgl"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="544"/>
+        <CursorPos X="18" Y="276"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
       </Unit22>
       <Unit23>
         <Filename Value="/usr/lib/codetyphon/typhon/lcl/controls.pp"/>
@@ -500,127 +505,136 @@
         <CursorPos X="25" Y="1120"/>
         <UsageCount Value="10"/>
       </Unit68>
+      <Unit69>
+        <Filename Value="projectmanagers.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ProjectManagers"/>
+        <EditorIndex Value="4"/>
+        <CursorPos X="21" Y="7"/>
+        <UsageCount Value="22"/>
+        <Loaded Value="True"/>
+      </Unit69>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="PosMemo/filetreeviews.pas"/>
-        <Caret Line="95" TopLine="83"/>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="501" Column="23" TopLine="478"/>
       </Position1>
       <Position2>
-        <Filename Value="PosMemo/filetreeviews.pas"/>
-        <Caret Line="96" TopLine="83"/>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="163" Column="3" TopLine="161"/>
       </Position2>
       <Position3>
-        <Filename Value="PosMemo/filetreeviews.pas"/>
-        <Caret Line="97" TopLine="83"/>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="164" Column="3" TopLine="162"/>
       </Position3>
       <Position4>
-        <Filename Value="PosMemo/filetreeviews.pas"/>
-        <Caret Line="96" TopLine="83"/>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="165" Column="3" TopLine="163"/>
       </Position4>
       <Position5>
-        <Filename Value="PosMemo/filetreeviews.pas"/>
-        <Caret Line="97" TopLine="83"/>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="166" Column="3" TopLine="164"/>
       </Position5>
       <Position6>
-        <Filename Value="PosMemo/filetreeviews.pas"/>
-        <Caret Line="96" TopLine="83"/>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="167" Column="3" TopLine="165"/>
       </Position6>
       <Position7>
-        <Filename Value="PosMemo/filetreeviews.pas"/>
-        <Caret Line="98" TopLine="83"/>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="168" Column="3" TopLine="166"/>
       </Position7>
       <Position8>
-        <Filename Value="PosMemo/filetreeviews.pas"/>
-        <Caret Line="99" TopLine="83"/>
+        <Filename Value="PosMemo/posmemos.pas"/>
+        <Caret Line="329" Column="67" TopLine="305"/>
       </Position8>
       <Position9>
         <Filename Value="PosMemo/posmemos.pas"/>
-        <Caret Line="330" TopLine="316"/>
+        <Caret Line="14" Column="49"/>
       </Position9>
       <Position10>
-        <Filename Value="PosMemo/filetreeviews.pas"/>
-        <Caret Line="88" TopLine="83"/>
+        <Filename Value="projectmanagers.pas"/>
+        <Caret Line="16" Column="7" TopLine="7"/>
       </Position10>
       <Position11>
-        <Filename Value="PosMemo/filetreeviews.pas"/>
-        <Caret Line="89" TopLine="83"/>
+        <Filename Value="projectmanagers.pas"/>
+        <Caret Line="28" Column="24" TopLine="10"/>
       </Position11>
       <Position12>
-        <Filename Value="PosMemo/filetreeviews.pas"/>
-        <Caret Line="90" TopLine="83"/>
+        <Filename Value="projectmanagers.pas"/>
+        <Caret Line="76" Column="59" TopLine="75"/>
       </Position12>
       <Position13>
-        <Filename Value="PosMemo/filetreeviews.pas"/>
-        <Caret Line="92" TopLine="83"/>
+        <Filename Value="projectmanagers.pas"/>
+        <Caret Line="18" Column="13" TopLine="4"/>
       </Position13>
       <Position14>
-        <Filename Value="PosMemo/filetreeviews.pas"/>
-        <Caret Line="93" TopLine="83"/>
+        <Filename Value="projectmanagers.pas"/>
+        <Caret Line="61" Column="34" TopLine="49"/>
       </Position14>
       <Position15>
-        <Filename Value="PosMemo/filetreeviews.pas"/>
-        <Caret Line="90" TopLine="83"/>
+        <Filename Value="projectmanagers.pas"/>
+        <Caret Line="111" Column="32" TopLine="96"/>
       </Position15>
       <Position16>
-        <Filename Value="PosMemo/filetreeviews.pas"/>
-        <Caret Line="92" TopLine="83"/>
+        <Filename Value="projectmanagers.pas"/>
+        <Caret Line="121" Column="29" TopLine="103"/>
       </Position16>
       <Position17>
         <Filename Value="PosMemo/filetreeviews.pas"/>
-        <Caret Line="93" TopLine="83"/>
+        <Caret TopLine="4"/>
       </Position17>
       <Position18>
         <Filename Value="PosMemo/filetreeviews.pas"/>
-        <Caret Line="90" TopLine="83"/>
+        <Caret Line="55" Column="25" TopLine="43"/>
       </Position18>
       <Position19>
         <Filename Value="PosMemo/filetreeviews.pas"/>
-        <Caret Line="92" TopLine="83"/>
+        <Caret Line="52" Column="15" TopLine="39"/>
       </Position19>
       <Position20>
         <Filename Value="PosMemo/filetreeviews.pas"/>
-        <Caret Line="93" TopLine="83"/>
+        <Caret Line="190" Column="3" TopLine="188"/>
       </Position20>
       <Position21>
-        <Filename Value="PosMemo/filetreeviews.pas"/>
-        <Caret Line="90" TopLine="83"/>
+        <Filename Value="projectmanagers.pas"/>
+        <Caret Line="60" Column="17" TopLine="46"/>
       </Position21>
       <Position22>
         <Filename Value="PosMemo/filetreeviews.pas"/>
-        <Caret Line="95" TopLine="83"/>
+        <Caret Line="54" Column="27" TopLine="40"/>
       </Position22>
       <Position23>
-        <Filename Value="PosMemo/filetreeviews.pas"/>
-        <Caret Line="96" TopLine="83"/>
+        <Filename Value="PosMemo/posmemos.pas"/>
+        <Caret Line="14" Column="49" TopLine="10"/>
       </Position23>
       <Position24>
         <Filename Value="PosMemo/filetreeviews.pas"/>
-        <Caret Line="97" TopLine="83"/>
+        <Caret Line="188" Column="25" TopLine="188"/>
       </Position24>
       <Position25>
-        <Filename Value="PosMemo/filetreeviews.pas"/>
-        <Caret Line="96" TopLine="83"/>
+        <Filename Value="PosMemo/posmemos.pas"/>
+        <Caret Line="133" Column="15" TopLine="120"/>
       </Position25>
       <Position26>
-        <Filename Value="PosMemo/filetreeviews.pas"/>
-        <Caret Line="97" TopLine="83"/>
+        <Filename Value="PosMemo/posmemos.pas"/>
+        <Caret Line="139" Column="23" TopLine="120"/>
       </Position26>
       <Position27>
-        <Filename Value="PosMemo/filetreeviews.pas"/>
-        <Caret Line="96" TopLine="83"/>
+        <Filename Value="PosMemo/posmemos.pas"/>
+        <Caret Line="217" Column="23" TopLine="191"/>
       </Position27>
       <Position28>
-        <Filename Value="PosMemo/filetreeviews.pas"/>
-        <Caret Line="97" TopLine="83"/>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="173" Column="61" TopLine="410"/>
       </Position28>
       <Position29>
-        <Filename Value="PosMemo/filetreeviews.pas"/>
-        <Caret Line="96" TopLine="83"/>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="384" Column="46" TopLine="369"/>
       </Position29>
       <Position30>
         <Filename Value="PosMemo/filetreeviews.pas"/>
-        <Caret Line="97" Column="13" TopLine="83"/>
+        <Caret Line="52" Column="29" TopLine="52"/>
       </Position30>
     </JumpHistory>
   </ProjectSession>

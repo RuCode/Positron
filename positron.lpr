@@ -13,7 +13,7 @@ uses {$IFDEF UNIX} {$IFDEF UseCThreads}
   PositronUtils,
   ThemeManagers,
   ConfigManagers, filetreeviews,
-  pl_virtualtrees, MiniMaps, CustomPosMemos, posmemos;
+  pl_virtualtrees, MiniMaps, CustomPosMemos, posmemos, ProjectManagers;
 
 {$R *.res}
 

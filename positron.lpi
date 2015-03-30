@@ -41,7 +41,7 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="14">
+    <Units Count="15">
       <Unit0>
         <Filename Value="positron.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -83,14 +83,17 @@
       <Unit7>
         <Filename Value="positronutils.pas"/>
         <IsPartOfProject Value="True"/>
+        <UnitName Value="PositronUtils"/>
       </Unit7>
       <Unit8>
         <Filename Value="thememanagers.pas"/>
         <IsPartOfProject Value="True"/>
+        <UnitName Value="ThemeManagers"/>
       </Unit8>
       <Unit9>
         <Filename Value="configmanagers.pas"/>
         <IsPartOfProject Value="True"/>
+        <UnitName Value="ConfigManagers"/>
       </Unit9>
       <Unit10>
         <Filename Value="PosMemo/filetreeviews.pas"/>
@@ -111,6 +114,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="PosMemos"/>
       </Unit13>
+      <Unit14>
+        <Filename Value="projectmanagers.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ProjectManagers"/>
+      </Unit14>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

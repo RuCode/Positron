@@ -44,10 +44,12 @@ type
     fImages: TImageList;
   protected
     procedure DblClick; override;
+    procedure ExpandTree(ARoot: TTreeNode; AList: TStringList);
+    procedure ExpandToFile(APath: string);
   public
     constructor Create(AnOwner: TComponent); override;
     destructor Destroy; override;
-    procedure Update(APath: string);
+    procedure UpdateViewPort(APath: string);
     procedure OpenFolder(APath: string; ParentNode: TTreeNode = nil);
     procedure OpenProject(APath: string);
     procedure OpenForms(APath: string);
@@ -60,7 +62,7 @@ function ExtractLastDir(DirPath: string): string;
 implementation
 
 function ExtractLastDir(DirPath: string): string;
-// Получение имени последней директории
+  // Получение имени последней директории
 var
   i, fromDel: integer;
 begin
@@ -78,8 +80,10 @@ begin
     Result[i - fromDel + 1] := DirPath[i + 1];
 end;
 
+{ TFileTreeView }
+
 function ExtractPathFromItem(Node: TTreeNode): string;
-// Возвращает путь от Root-директории до выбранного файла
+  // Возвращает путь от Root-директории до выбранного файла
 var
   List: TStringList;
   CurrNode: TTreeNode;
@@ -98,8 +102,6 @@ begin
   List.Free;
 end;
 
-{ TFileTreeView }
-
 procedure TFileTreeView.DblClick;
 begin
   inherited DblClick;
@@ -108,6 +110,55 @@ begin
     if Assigned(fNotifyOpenEvent) then
       fNotifyOpenEvent(ExtractPathFromItem(Selected));
   end;
+end;
+
+procedure TFileTreeView.ExpandTree(ARoot: TTreeNode; AList: TStringList);
+// Рукурсивный обход
+var
+  i: integer;
+  j: integer;
+  Buf: string;
+begin
+  for i := 0 to ARoot.Count - 1 do
+  begin
+    for j := 0 to AList.Count - 1 do
+    begin
+      Buf := AList[j];
+      if UTF8Pos(Buf, string(ARoot[i].Text)) <> 0 then
+        Expand(ARoot[i]);
+    end;
+    if ARoot.Items[i].Count <> -1 then
+      ExpandTree(ARoot.Items[i], AList);
+  end;
+end;
+
+procedure TFileTreeView.ExpandToFile(APath: string);
+// Линейная процедура
+var
+  list: TStringList;
+  Buf: string;
+  i: integer;
+begin
+  // Разбиваем путь на составляющие
+  list := TStringList.Create;
+  i := 1;
+  Buf := '';
+  repeat
+    if APath[i] <> DirectorySeparator then
+      Buf += APath[i]
+    else
+    begin
+      list.Add(Buf);
+      Buf := '';
+    end;
+    Inc(i);
+  until i = Length(APath);
+  Buf += APath[i];
+  list.Add(Buf);
+  // Открываем
+  ExpandTree(Items[0], list);
+  Expand(Items[0]);
+  list.Free;
 end;
 
 constructor TFileTreeView.Create(AnOwner: TComponent);
@@ -134,60 +185,7 @@ begin
   inherited Destroy;
 end;
 
-procedure TFileTreeView.Update(APath: string);
-
-  procedure ExpandTree(ARoot: TTreeNode; AList: TStringList);
-  // Рукурсивный обход
-  var
-    i: integer;
-    j: integer;
-    Buf: String;
-  begin
-    for i := 0 to ARoot.Count - 1 do
-    begin
-      for j := 0 to AList.Count - 1 do
-      begin
-        Buf := AList[j];
-        //ShowMessage(Buf + ' - ' + ARoot[i].Text);
-        if UTF8Pos(Buf, String(ARoot[i].Text)) <> 0 then
-        begin
-          ARoot.Expanded := True;
-          ARoot.Expand(False);
-        end;
-      end;
-      if ARoot.Items[i].Count <> -1 then
-        ExpandTree(ARoot.Items[i], AList);
-    end;
-  end;
-
-  procedure ExpandToFile(APath: string);
-  // Линейная процедура
-  var
-    list: TStringList;
-    Buf: string;
-    i: integer;
-  begin
-    // Разбиваем путь на составляющие
-    list := TStringList.Create;
-    i := 1;
-    Buf := '';
-    repeat
-      if APath[i] <> DirectorySeparator then
-        Buf += APath[i]
-      else
-      begin
-        list.Add(Buf);
-        Buf := '';
-      end;
-      Inc(i);
-    until i = Length(APath);
-    list.Add(Buf);
-    // Открываем
-    ExpandTree(Items[0], list);
-    Expand(Items[0]);
-    list.Free;
-  end;
-
+procedure TFileTreeView.UpdateViewPort(APath: string);
 begin
   if APath = '' then
     Exit;
@@ -198,7 +196,7 @@ begin
       ExpandToFile(APath);
     end;
 
-  else
+    else
       ShowMessage('Остальные варианты пока не реализованы');
   end;
   //  Items[0].Expand(False);

@@ -88,6 +88,7 @@ object FormMain: TFormMain
     end
     object MenuEdit: TMenuItem
       Caption = 'Правка'
+      OnClick = MenuEditClick
       object MenuUndo: TMenuItem
         Action = EditUndo
       end
@@ -125,6 +126,24 @@ object FormMain: TFormMain
         Action = SearchAndReplace
       end
     end
+    object MenuProject: TMenuItem
+      Caption = 'Проект'
+      object MenuNewProject: TMenuItem
+        Caption = 'Создать проект'
+      end
+      object MenuItem5: TMenuItem
+        Caption = 'Открыть проект'
+      end
+      object MenuItem6: TMenuItem
+        Caption = 'Закрыть проект'
+      end
+      object MenuItem7: TMenuItem
+        Caption = '-'
+      end
+      object MenuItem8: TMenuItem
+        Caption = 'Параметры проекта'
+      end
+    end
     object MenuDebug: TMenuItem
       Caption = 'Отладка'
       object MenuSelect: TMenuItem
@@ -150,6 +169,7 @@ object FormMain: TFormMain
     object EditCut: TEditCut
       Category = 'Edit'
       Caption = 'Выре&зать'
+      Enabled = False
       Hint = 'Вырезать'
       OnUpdate = EditCutUpdate
       ShortCut = 16472
@@ -157,6 +177,7 @@ object FormMain: TFormMain
     object EditCopy: TEditCopy
       Category = 'Edit'
       Caption = 'Копиров&ать'
+      Enabled = False
       Hint = 'Копировать'
       OnUpdate = EditCopyUpdate
       ShortCut = 16451
@@ -164,6 +185,7 @@ object FormMain: TFormMain
     object EditPaste: TEditPaste
       Category = 'Edit'
       Caption = '&Вставить'
+      Enabled = False
       Hint = 'Вставить'
       OnUpdate = EditPasteUpdate
       ShortCut = 16470
@@ -171,6 +193,7 @@ object FormMain: TFormMain
     object EditSelectAll: TEditSelectAll
       Category = 'Edit'
       Caption = 'Вы&делить все...'
+      Enabled = False
       Hint = 'Выделить все'
       OnUpdate = EditSelectAllUpdate
       ShortCut = 16449
@@ -178,6 +201,7 @@ object FormMain: TFormMain
     object EditUndo: TEditUndo
       Category = 'Edit'
       Caption = 'Отменит&ь'
+      Enabled = False
       Hint = 'Отменить'
       OnUpdate = EditUndoUpdate
       ShortCut = 16474
@@ -185,6 +209,7 @@ object FormMain: TFormMain
     object EditDelete: TEditDelete
       Category = 'Edit'
       Caption = '&Удалить'
+      Enabled = False
       Hint = 'Удалить'
       OnUpdate = EditDeleteUpdate
       ShortCut = 46
@@ -216,6 +241,7 @@ object FormMain: TFormMain
     object EditRedo: TAction
       Category = 'Edit'
       Caption = 'Повторить'
+      Enabled = False
       Hint = 'Повторить'
       OnExecute = EditRedoExecute
       OnUpdate = EditRedoUpdate
@@ -280,6 +306,7 @@ object FormMain: TFormMain
     object SearchText: TAction
       Category = 'Find'
       Caption = 'Поиск...'
+      Enabled = False
       OnExecute = SearchTextExecute
       OnUpdate = IsFileUpdate
       ShortCut = 114
@@ -287,6 +314,7 @@ object FormMain: TFormMain
     object SearchAndReplace: TAction
       Category = 'Find'
       Caption = 'Поиск и замена текста...'
+      Enabled = False
       OnExecute = SearchAndReplaceExecute
       OnUpdate = IsFileUpdate
       ShortCut = 16466

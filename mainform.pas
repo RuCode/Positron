@@ -18,6 +18,12 @@ type
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
+    MenuItem5: TMenuItem;
+    MenuItem6: TMenuItem;
+    MenuItem7: TMenuItem;
+    MenuItem8: TMenuItem;
+    MenuProject: TMenuItem;
+    MenuNewProject: TMenuItem;
     MenuSelect: TMenuItem;
     MenuReplaceText: TMenuItem;
     SearchAndReplace: TAction;
@@ -97,6 +103,7 @@ type
     procedure FileSaveAsAccept(Sender: TObject);
     procedure FileSaveExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure MenuEditClick(Sender: TObject);
     procedure MenuItem2Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
     procedure MenuSelectClick(Sender: TObject);
@@ -155,6 +162,11 @@ begin
   Config := TConfigManager.Create;
   LoadPositionFromConfig;
   LoadHistory;
+end;
+
+procedure TFormMain.MenuEditClick(Sender: TObject);
+begin
+
 end;
 
 procedure TFormMain.MenuItem2Click(Sender: TObject);
@@ -378,7 +390,6 @@ begin
   end;
   Memo.ItemIndex := Config.ActiveTab;
   Config.EndUpdate;
-  DeleteFileUTF8(Config.ConfigName);
 end;
 
 function TFormMain.LoadTextFromLazarusResource(AName: string): string;
